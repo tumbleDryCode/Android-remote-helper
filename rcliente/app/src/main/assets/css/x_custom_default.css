@@ -1,0 +1,52 @@
+ 
+.txtClrNrml {
+color: #0000A0;
+}
+.txtClrHdr {
+color: #294759;
+}
+.txtClrDrkGrn {
+color: #005B5B;
+}
+.txtClrLtBlue {
+color: #ECECFF;
+}
+
+ 
+
+.txtClrNrml a {color: #0000A0;}
+.txtClrNrml a:hover {color: #0000A0;}
+.txtClrNrml a.active {color: #0000A0;}
+
+.txtClrHdr a {color: #294759;}
+.txtClrHdr a:hover {color: #294759;}
+.txtClrHdr a.active {color: #294759;}
+ 
+
+.txtClrDlg {color: rgb(169,199,216);}
+.txtClrDlg a {color: rgb(169,199,216);}
+.txtClrDlg a:hover {color: rgb(169,199,216);}
+.txtClrDlg a.active {color: rgb(169,199,216);}
+
+ 
+
+ 
+.bkgdClrNrml {background-color: #F7F7F7;}
+.bkgdClrTNrml {background:rgba(236, 236, 255, .9);}
+.bkgdClrHdr {background-color: #999759;}
+.bkgdClrHdrTtl {background-color: #26a69a;}
+.bkgdClrTtl {background-color: #FFF8F8;}
+.bkgdClrWhite {background-color: #FFFFFF;}
+.bkgdClrDlg {background-color: rgb(169,199,216);}
+.bkgdClrAtch {background-color: rgb(240,240,240);}
+.bkgdClrRed {background-color: rgb(255,0,0);}
+.bkgdClrGreen {background-color: rgb(0,255,0);}
+.bkgdClrDGreen {background-color: rgb(10,137,10);}
+.bkgdClrCollHdr {background-color: rgb(249,249,251);}
+ 
+
+
+header .top-bar {
+background-color: #294759;
+background: #294759 none repeat scroll 0% 0%; 
+}

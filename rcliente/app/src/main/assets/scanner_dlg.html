@@ -1,0 +1,285 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1, user-scalable=no, maximum-scale=1">
+<script  type="text/javascript">
+var isPhP = "no";
+var isJApp = "no";
+var dw = function(theElem, tStr) { theElem.innerHTML = tStr; };
+var getFArr = function() {
+return new Array("index_header", "index_nav", "index_main", "index_footer");
+};
+
+</script>
+
+
+<script language="javascript" type="text/javascript" src="js/lz-string.js"></script>
+<script src="js/app/x_admin.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_all.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_booter.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/media_edit.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_app_scanner_dlg.js?v4"  language="javascript" type="text/javascript"></script>
+
+
+<link href="css/main.css" rel="stylesheet">
+<style>
+.clsThumbimg {
+border: 1px solid #666699;
+vertical-align:center;
+min-height: 42px;
+min-width: 62px;
+max-height: 72px;
+max-width: 72px;
+margin-right:8px;
+margin-bottom:6px;
+}
+.clsThumbdv {
+  display: inline-block;
+  float: left;
+ margin-left: 10px;
+}
+</style>
+<script  type="text/javascript">
+
+
+
+function urlToArray(urla) {
+// alert(url);
+    try {
+	    urlb = urla.replace("%","");
+	    urlc = urlb.replace("%","");
+	    url = urlc;
+        var request = {};
+        var arr = [];
+        var pairs = url.substring(url.indexOf('?') + 1).split('&');
+        for (var i = 0; i < pairs.length; i++) {
+          var pair = pairs[i].split('=');
+
+          //check we have an array here - add array numeric indexes so the key elem[] is not identical.
+          if(JSSHOP.shared.endsWith(decodeURIComponent(pair[0]), '[]') ) {
+              var arrName = decodeURIComponent(pair[0]).substring(0, decodeURIComponent(pair[0]).length - 2);
+              if(!(arrName in arr)) {
+                  arr.push(arrName);
+                  arr[arrName] = [];
+              }
+
+              arr[arrName].push(decodeURIComponent(pair[1]));
+              request[arrName] = arr[arrName];
+          } else {
+            request[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+          }
+        }
+        return request;
+    } catch (e) {
+	// alert(e);
+        JSSHOP.logJSerror(e, arguments, "JSSHOP.shared.urlToArray");
+        return "noQvalue";
+    }
+
+    }
+	
+	
+var isPhP = "no";
+var isJApp = "no"; 
+var isJavaFx = "no";
+var currDocHref = document.location.href;
+var dw = function(theElem, tStr) { theElem.innerHTML = tStr; };
+
+var nuDW = function(theElem) { 
+if(theElem.getAttribute("data-isscript") != null) {
+try {
+tDison = theElem.getAttribute("data-isscript");
+eval(tDison);
+} catch(e) {
+alert("nuDW-EVAL: " + tDison + "::" + e);
+}
+} else if(theElem.getAttribute("data-ison") != null) {
+try {
+tDison = theElem.getAttribute("data-ison");
+theElem.innerHTML = eval(tDison);
+} catch(e) {
+alert("nuDW: " +tDison + "::" + e);
+}
+}
+};
+
+var getFArr = function() {
+return new Array("index_header", "index_nav", "index_main", "index_footer");
+};
+
+if(currDocHref.indexOf("http") != -1) {
+isPhP = "y";
+}
+
+
+    
+</script>
+
+</head>
+<body>
+<form name="rscanjob">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="rjob_rtype" id="rjob_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_stype" id="rjob_stype" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_coords" id="rjob_coords" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_rcode" id="rjob_rcode" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_title" id="rjob_title" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_desc" id="rjob_desc" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_vala" id="rjob_vala" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_valb" id="rjob_valb" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_dadded" id="rjob_dadded" value="5" data-prval="disnull">
+</form>
+<table style="margin: 0 auto;max-width: 90%" align="center">
+	<tr>
+		<td>
+ 
+
+<table>
+		<tr>
+			<td>
+			Set new scan action</td>
+		</tr>
+		<tr>
+			<td>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div>
+				<table style="width: 100%">
+					<tr>
+			<td>
+			<div  id="tdItemAdd" class="slmtable brdrClrLGrey">
+				<table style="width: 100%">
+					<tr>
+					<td><table style="width: 100%; margin:0 auto">
+						<tr>
+		<td id="tdInpMakes"><ti data-ison="stxt[102]" data-desc="make"></ti>
+		Name</td>
+						</tr>
+						<tr>
+		<td>
+		<table style="margin: 0 auto;" width="100%" align="center">
+			<tr>
+				<td style="width:100%">
+		<input spellckeck="false" autocomplete="off" name="tmp_rjob_title" id="tmp_rjob_title" class="cls_input_text" value="Ex: Audi,BMW.. etc." title="make" style="color:#DEDEFF;width:100%"  onfocus="javascript:tdInpMakes.className='txtClrHdr';if(this.value=='Ex: Audi,BMW.. etc.') this.value = '';this.style.color='#000000';" onblur="javascript:tdInpMakes.className='txtClrDlg';if(this.value === '') { this.value = 'Ex: Audi,BMW.. etc.';this.style.color='#DEDEDE';}"></td>
+				<td valign="top">
+				<a href="javascript:clearInpMakes();" class="txtBold txtClrHdr">
+				<span>
+				<i class="material-icons txtBigger txtClrDlg" title="delete">&#xe14c;</i></span></a></td>
+				<td valign="top">&nbsp;&nbsp; &nbsp;</td>
+			</tr>
+		</table>
+		</td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+	<tr>
+		<td id="tdInpYears">Set Pointer Location</td>
+	</tr>
+	<tr>
+		<td style="text-align: center">
+		<table style="margin: 0 auto;" width="100%" align="center">
+			<tr>
+				<td style="width:100%; height: 43px;"> 
+		<input  name="tmp_rjob_coords" id="tmp_rjob_coords" class="cls_input_text" spellckeck="false" autocomplete="off" style="width:100%" onfocus="javascript:tdInpYears.className='txtClrHdr';" onblur="javascript:tdInpYears.className='txtClrDlg';"></td>
+										<td valign="top" style="height: 43px"><button class="brdrNone crsrPointer bkgdClrWhite" onclick="javascript:tmp_rjob_coords.value=doCPointsStr();">
+<i class="small-material-icons txtClrDlg" title="list">&#xe241;</i></button></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td style="text-align: center"></td>
+	</tr>
+	<tr>
+		<td style="text-align: center; height: 29px;"><input type="hidden" name="inpLocation" id="inpLocation" class="cls_input_text"><input type="hidden" name="inpImpModels" value="inpImpModels" id="inpImpModels"><input type="hidden" name="inpImpMakes" value="inpImpParts" id="inpImpMakes"><input type="hidden" name="inpImpParts" value="inpImpParts" id="inpImpParts"><input type="hidden" name="mod_i_title" value="" id="mod_i_title">
+		<div id="dvRJobItems"  style="border:0px;max-width:300px;">
+															   </div></td>
+	</tr>
+	<tr>
+		<td>
+		
+		<div align="center"><button id="btnEUsave" class="cls_button-save"><ti data-ison="stxt[21]" data-desc="btn_save" onclick="javascript:doScanJobAdd();">Save</ti></button> </div></td>
+	</tr>
+	</table>
+</td>
+					</tr>
+					</table>
+			</div></td>
+					</tr>
+				</table>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			
+			</td>
+		</tr>
+		<tr>
+			<td>
+														  <div id="dvFleetItems"  style="border:0px;max-width:300px;"></div>
+</td>
+		</tr>
+		</table>
+ 
+
+          
+                                       
+			                                   </td>
+	</tr>
+	</table>
+
+
+
+<p>
+</p>
+
+
+
+<script language="javascript" type="text/javascript">
+// JSSHOP.ajax.doNuAjaxPipe("includedNav",  "tplates/index_nav.html", pfRet);
+setTimeout("doBootLoad()", 800);
+// JSSHOP.loadScript("js/" + jscssprefix + "x_menu.js", doACTBboot,"js");
+// doSpinSet("includedContent", "big", "loading....");
+
+</script>
+
+<input type="hidden" id="fldChallArray" value=" ">
+
+ </body> 
+</html>

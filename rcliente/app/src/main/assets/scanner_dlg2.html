@@ -1,0 +1,228 @@
+<html>
+<head>
+<meta content="pt" http-equiv="Content-Language">
+<meta name="viewport" content="initial-scale=1, user-scalable=no, maximum-scale=1">
+<script  type="text/javascript">
+var isPhP = "no";
+var isJApp = "no";
+var dw = function(theElem, tStr) { theElem.innerHTML = tStr; };
+var getFArr = function() {
+return new Array("index_header", "index_nav", "index_main", "index_footer");
+};
+
+</script>
+
+
+<script language="javascript" type="text/javascript" src="js/lz-string.js"></script>
+<script src="js/app/x_admin.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_all.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_booter.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/media_edit.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_app_scanner_dlg.js"  language="javascript" type="text/javascript"></script>
+
+
+<link href="css/main.css" rel="stylesheet">
+<style>
+.clsThumbimg {
+border: 1px solid #666699;
+vertical-align:center;
+min-height: 42px;
+min-width: 62px;
+max-height: 72px;
+max-width: 72px;
+margin-right:8px;
+margin-bottom:6px;
+}
+.clsThumbdv {
+  display: inline-block;
+  float: left;
+ margin-left: 10px;
+}
+.auto-style1 {
+	background-color: #FFFF00;
+}
+</style>
+<script  type="text/javascript">
+
+
+
+function urlToArray(urla) {
+// alert(url);
+    try {
+	    urlb = urla.replace("%","");
+	    urlc = urlb.replace("%","");
+	    url = urlc;
+        var request = {};
+        var arr = [];
+        var pairs = url.substring(url.indexOf('?') + 1).split('&');
+        for (var i = 0; i < pairs.length; i++) {
+          var pair = pairs[i].split('=');
+
+          //check we have an array here - add array numeric indexes so the key elem[] is not identical.
+          if(JSSHOP.shared.endsWith(decodeURIComponent(pair[0]), '[]') ) {
+              var arrName = decodeURIComponent(pair[0]).substring(0, decodeURIComponent(pair[0]).length - 2);
+              if(!(arrName in arr)) {
+                  arr.push(arrName);
+                  arr[arrName] = [];
+              }
+
+              arr[arrName].push(decodeURIComponent(pair[1]));
+              request[arrName] = arr[arrName];
+          } else {
+            request[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+          }
+        }
+        return request;
+    } catch (e) {
+	// alert(e);
+        JSSHOP.logJSerror(e, arguments, "JSSHOP.shared.urlToArray");
+        return "noQvalue";
+    }
+
+    }
+	
+	
+var isPhP = "no";
+var isJApp = "yes"; 
+var isJavaFx = "no";
+var currDocHref = document.location.href;
+var dw = function(theElem, tStr) { theElem.innerHTML = tStr; };
+
+var nuDW = function(theElem) { 
+if(theElem.getAttribute("data-isscript") != null) {
+try {
+tDison = theElem.getAttribute("data-isscript");
+eval(tDison);
+} catch(e) {
+alert("nuDW-EVAL: " + tDison + "::" + e);
+}
+} else if(theElem.getAttribute("data-ison") != null) {
+try {
+tDison = theElem.getAttribute("data-ison");
+theElem.innerHTML = eval(tDison);
+} catch(e) {
+alert("nuDW: " +tDison + "::" + e);
+}
+}
+};
+
+var getFArr = function() {
+return new Array("index_header", "index_nav", "index_main", "index_footer");
+};
+
+if(currDocHref.indexOf("http") != -1) {
+isPhP = "y";
+}
+
+
+    
+</script>
+
+</head>
+<body>
+<form name="rscanjob">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="rjob_rtype" id="rjob_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_stype" id="rjob_stype" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_coords" id="rjob_coords" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_rcode" id="rjob_rcode" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_title" id="rjob_title" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_desc" id="rjob_desc" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_vala" id="rjob_vala" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_valb" id="rjob_valb" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_dadded" id="rjob_dadded" value="5" data-prval="disnull">
+</form>
+<table style="margin: 0 auto;max-width: 90%" align="center">
+	<tr>
+		<td>
+ 
+
+<table>
+		<tr>
+			<td>
+			&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div>
+				<a href="javascript:doScanJobGet();">list</a></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			
+			</td>
+		</tr>
+		<tr>
+			<td class="auto-style1">
+														  <div id="dvRJobItems"  style="border:0px;max-width:300px;">
+															  tytytyr<br>tr<br>
+															  try<br>rty<br>rt<br>
+															  yrt<br>y<br>rt<br>
+															  yrt<br></div>
+</td>
+		</tr>
+		</table>
+ 
+
+          
+                                       
+			                                   </td>
+	</tr>
+	</table>
+
+
+
+<p>
+</p>
+
+
+
+<script language="javascript" type="text/javascript">
+// JSSHOP.ajax.doNuAjaxPipe("includedNav",  "tplates/index_nav.html", pfRet);
+setTimeout("doBootLoad()", 800);
+// JSSHOP.loadScript("js/" + jscssprefix + "x_menu.js", doACTBboot,"js");
+// doSpinSet("includedContent", "big", "loading....");
+
+</script>
+
+<input type="hidden" id="fldChallArray" value=" ">
+ </body> 
+</html>

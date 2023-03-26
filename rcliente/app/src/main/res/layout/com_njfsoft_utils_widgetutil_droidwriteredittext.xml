@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+>
+    <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+                android:id="@+id/lLayoutTEbtns"
+
+  		 >
+
+
+
+        <LinearLayout
+       
+ 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+ 
+			
+        android:padding="5dp"
+ 	android:layout_margin="1dp"
+                    android:orientation="horizontal"
+        >
+ <LinearLayout
+    android:focusable="false" android:focusableInTouchMode="true"
+    android:layout_width="0px" android:layout_height="0px"/>
+ 
+                <ImageButton
+                        android:id="@+id/imgBtnMainT"
+                        android:layout_width="42dip"
+                        android:layout_height="38dip"
+                        android:src="@drawable/icon_smsscenes"
+                        android:background="#000000"
+                        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:padding="5dp"
+        android:scaleType="fitCenter" 
+                        />
+
+
+
+        <EditText
+			android:background="@drawable/com_njfsoft_utils_widgetutil_dwet_rounded_pnums"
+                android:id="@+id/txtVwEdCntcs"
+                android:layout_width="140dip"
+                android:layout_height="wrap_content"
+		    android:textColorHint="#DEDEDE"
+                android:textColor="#FFFFFF"
+       	    android:padding="2dip"
+                android:layout_margin="5dip"
+                android:textSize="14dip" />
+
+ 
+
+
+    <Button
+            android:id="@+id/btnGetCntcts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnContacts"
+	  android:background="@android:color/transparent"
+         android:color="#FFFFFF"
+         android:textColor="#FFFFFF"
+        	    android:padding="2dip"
+                android:layout_margin="2dip"
+
+            />
+
+
+    <ImageButton
+            android:id="@+id/imgBtnHelp"
+            android:layout_width="42dip"
+            android:layout_height="38dip"
+ 			  android:layout_margin="3dp"
+ 		android:background="@drawable/com_njfsoft_utils_widgetutil_dwet_imgbtn_help"   
+
+            />
+
+
+
+	  </LinearLayout>
+
+
+ 
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+			  android:layout_gravity="center"
+                    >	
+            <ToggleButton
+                    android:id="@+id/tglBtnBold"
+                        android:layout_width="46dip"
+                        android:layout_height="fill_parent"
+                    android:textOff=""
+                    android:textOn=""
+			  android:layout_margin="3dp"
+			  android:background="@drawable/com_njfsoft_utils_widgetutil_dwet_tglbtn_bold"
+                    android:textStyle="bold" />
+
+            <ToggleButton
+                    android:id="@+id/tglBtnItalics"
+                        android:layout_width="46dip"
+                        android:layout_height="fill_parent"
+                    android:textOff=""
+                    android:textOn=""
+			  android:layout_margin="3dp"
+			  android:background="@drawable/com_njfsoft_utils_widgetutil_dwet_tglbtn_italic"
+                    android:textStyle="italic" />
+
+                <ImageButton
+                        android:id="@+id/imgBtnTxtClr"
+                        android:layout_width="46dip"
+                        android:layout_height="fill_parent"
+			  android:layout_margin="3dp"
+
+                        android:background="@drawable/com_njfsoft_utils_widgetutil_dwet_imgbtn_textcolor" />
+                <ImageButton
+                        android:id="@+id/imgBtnFntSize"
+                        android:layout_width="46dip"
+                        android:layout_height="fill_parent"
+			  android:layout_margin="3dp"
+
+                        android:background="@drawable/com_njfsoft_utils_widgetutil_dwet_imgbtn_textsize"
+ 				/>
+
+
+            <ImageButton
+                    	android:id="@+id/imgBtnReloadMsgs"
+                        android:layout_width="46dip"
+                        android:layout_height="fill_parent"
+			  android:layout_margin="3dp"
+
+				android:background="@drawable/com_njfsoft_utils_widgetutil_dwet_imgbtn_reloadmsgs"
+                   />
+
+                <ImageButton
+                        android:id="@+id/imgBtnGetScene"
+                        android:layout_width="46dip"
+                        android:layout_height="fill_parent"
+			  android:layout_margin="3dp"
+
+                        android:background="@drawable/com_njfsoft_utils_widgetutil_dwet_imgbtn_createscene"       
+          		 />
+        </LinearLayout>
+
+ 	
+        <RelativeLayout
+       
+ 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+        >
+
+
+ 
+        <LinearLayout
+                android:id="@+id/dwet_main"
+                android:layout_width="fill_parent"
+                android:layout_height="120dip"
+                android:gravity="top" 
+        	    android:padding="7dp"
+                android:layout_margin="5dp"
+                android:inputType="textCapSentences|textVisiblePassword"
+                android:maxLines="4"
+		    android:nextFocusUp="@id/dwet_main" android:nextFocusLeft="@id/dwet_main"
+			android:orientation="horizontal" />
+
+    <ImageButton
+            android:id="@+id/imgBtnSendMsg"
+            android:layout_width="55dp"
+            android:layout_height="62dp"
+ 
+ 		android:background="@drawable/com_njfsoft_utils_widgetutil_dwet_imgbtn_sendsms"   
+ 
+ 
+        android:layout_alignBottom="@+id/dwet_main"
+        android:layout_alignRight="@+id/dwet_main"
+
+            />
+
+
+
+
+
+</RelativeLayout>
+
+ 
+
+</LinearLayout>
+</FrameLayout>

@@ -1,0 +1,57 @@
+.dtable {
+  
+    	color:#DD1920;
+	background-color:#FFF8F8;
+	  border: 1px solid #000000; 
+	margin: 0 auto; padding: 2px; margin: 2px;
+
+}
+
+.stdtbl {
+border: 0px;
+margin: 0px;
+padding: 0px;
+align: center;
+margin: 0 auto;
+}
+.stdtbl tfoot th {
+ 	padding: 0.2em;
+	text-align: left;
+ 
+}
+
+.stdtbl thead th {
+ 	padding: 0.2em;
+	text-align: left;
+	color:#000000;
+ 
+
+}
+.stdtbl thead a {
+ 
+	color:#000000;
+	border:0px;
+}
+
+
+.stdtbl tfoot td {
+ 
+}
+
+.stdtbl tbody td {
+       
+	padding: 10px;
+}
+
+ 
+
+.stdtbl tbody tr:nth-of-type(odd) { 
+/* background-color:rgb(252, 253, 253); */
+}
+
+.stdtbl th.numeric {
+	text-align: right;
+}
+
+ 
+

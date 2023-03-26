@@ -1,0 +1,81 @@
+<resources>
+    <string name="hello">Hello World, Touch!</string>
+    <string name="app_name">Desktop Remote</string>
+
+	    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="capture_name">QR Code Capture</string>
+    <string name="encoder_name">QR Code Encoder</string>
+    <string name="decoder_name">QR Code Decoder</string>
+
+    <string name="contents_contact">Contact info</string>
+    <string name="contents_email">Email address</string>
+    <string name="contents_location">Geographic coordinates</string>
+    <string name="contents_phone">Phone number</string>
+    <string name="contents_sms">SMS address</string>
+    <string name="contents_text">Plain text</string>
+
+    <string name="msg_default_contents">Contents</string>
+    <string name="msg_default_format">Format</string>
+    <string name="msg_default_meta">Metadata</string>
+    <string name="msg_default_mms_subject">Hi</string>
+    <string name="msg_default_status">Scan..</string>
+    <string name="msg_default_time">Time</string>
+    <string name="msg_default_type">Type</string>
+
+    <string name="result_address_book">Found contact info</string>
+    <string name="result_calendar">Found calendar event</string>
+    <string name="result_email_address">Found email address</string>
+    <string name="result_geo">Found geographic coordinates</string>
+    <string name="result_isbn">Found book</string>
+    <string name="result_product">Found product</string>
+    <string name="result_sms">Found SMS address</string>
+    <string name="result_tel">Found phone number</string>
+    <string name="result_text">Found plain text</string>
+    <string name="result_uri">Found URL</string>
+    <string name="result_wifi">Found WLAN Configuration</string>
+
+    <string name="wifi_changing_network">Changing Network</string>
+    <string name="wifi_ssid_label">Network Name</string>
+    <string name="wifi_type_label">Type</string>
+    <string name="barcode_image">Barcode Image</string>
+    <string name="btnContacts"><u>C</u>ontacts</string>
+    <string name="buttonHandler">clickHandler</string>
+    <integer name="viewfinder_border_width">4</integer>
+    <integer name="viewfinder_border_length">60</integer>
+    <string name="title_activity_scan_qr_code">QR SCAN</string>
+    <string name="close">Close</string>
+    <string name="auto_scan_notification">Auto Scam</string>
+    <string name="notification">Notif</string>
+    <string name="positive_button_confirm">Confirm</string>
+    <string name="could_not_read_qr_code_from_scanner">Could not Read QR</string>
+    <string name="camera_not_found">No Camera</string>
+    <string name="is_qr_code_scanner">QR Code</string>
+    <string name="is_open_flashlight">是否打开闪光灯 </string>
+    <string name="take_photos">Take Photo</string>
+    <string name="scanner_activity">ZBar Scanner - Full Activity</string>
+    <string name="scanner_fragment_activity">ZBar Scanner - Full Fragment Activity</string>
+    <string name="simple_scanner_activity">ZBar Scanner - Simple Activity</string>
+    <string name="simple_scanner_fragment_activity">ZBar Scanner - Simple Fragment Activity</string>
+    <string name="simple_activity_sample">Simple Activity Sample</string>
+    <string name="simple_fragment_sample">Simple Fragment Sample</string>
+    <string name="activity_sample">Full Activity Sample</string>
+    <string name="fragment_sample">Full Fragment Sample</string>
+    <string name="toggle_flash">Flash</string>
+    <string name="flash_on">Flash [ON]</string>
+    <string name="flash_off">Flash [OFF]</string>
+    <string name="auto_focus_on">Auto Focus [ON]</string>
+    <string name="auto_focus_off">Auto Focus [OFF]</string>
+    <string name="formats">Formats</string>
+    <string name="choose_formats">Choose Formats</string>
+    <string name="select_camera">Select a Camera</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Cancel</string>
+</resources>

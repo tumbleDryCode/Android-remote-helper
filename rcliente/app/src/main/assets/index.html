@@ -1,0 +1,1029 @@
+<!DOCTYPE html> 
+<html>
+<head> 	<!--  
+<script src="js/firebug-lite-master/content/firebug-lite-dev.js"></script> -->
+<!-- 
+- css file here or you can use boil/tools/yuicompressor/PackForPage.class -->
+<link href="css/main.css" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="js/leaflet/leaflet.css" type="text/css" />
+     <link rel="stylesheet" href="js/leaflet/easy-button.css" type="text/css" />   
+    <link rel="stylesheet" href="js/leaflet/lrm/leaflet-routing-machine.css" />
+     <link rel="stylesheet" href="js/leaflet/Control.FullScreen.css" />   
+     <link rel="stylesheet" href="js/st/st.css" />
+	<script src="js/exceljs/exceljs.min.js" tyoe="module"></script>
+
+
+
+     
+     
+     
+<!--
+- PackForPage takes main.css and imports and compresses to single page.
+<link href="css/quickorder_min.css" rel="stylesheet">  
+ -->
+<meta name="viewport" content="initial-scale=1, user-scalable=no, maximum-scale=1">
+<script  type="text/javascript">
+
+
+
+function urlToArray(urla) {
+// alert(url);
+    try {
+	    urlb = urla.replace("%","");
+	    urlc = urlb.replace("%","");
+	    url = urlc;
+        var request = {};
+        var arr = [];
+        var pairs = url.substring(url.indexOf('?') + 1).split('&');
+        for (var i = 0; i < pairs.length; i++) {
+          var pair = pairs[i].split('=');
+
+          //check we have an array here - add array numeric indexes so the key elem[] is not identical.
+          if(JSSHOP.shared.endsWith(decodeURIComponent(pair[0]), '[]') ) {
+              var arrName = decodeURIComponent(pair[0]).substring(0, decodeURIComponent(pair[0]).length - 2);
+              if(!(arrName in arr)) {
+                  arr.push(arrName);
+                  arr[arrName] = [];
+              }
+
+              arr[arrName].push(decodeURIComponent(pair[1]));
+              request[arrName] = arr[arrName];
+          } else {
+            request[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+          }
+        }
+        return request;
+    } catch (e) {
+	// alert(e);
+        JSSHOP.logJSerror(e, arguments, "JSSHOP.shared.urlToArray");
+        return "noQvalue";
+    }
+
+    }
+	
+	
+var isPhP = "no";
+var isJApp = "no"; 
+var isJavaFx = "no";
+var currDocHref = document.location.href;
+var dw = function(theElem, tStr) { theElem.innerHTML = tStr; };
+
+var nuDW = function(theElem) { 
+if(theElem.getAttribute("data-isscript") != null) {
+try {
+tDison = theElem.getAttribute("data-isscript");
+eval(tDison);
+} catch(e) {
+alert("nuDW-EVAL: " + tDison + "::" + e);
+}
+} else if(theElem.getAttribute("data-ison") != null) {
+try {
+tDison = theElem.getAttribute("data-ison");
+theElem.innerHTML = eval(tDison);
+} catch(e) {
+alert("nuDW: " +tDison + "::" + e);
+}
+}
+};
+
+var getFArr = function() {
+return new Array("index_header", "index_nav", "index_main", "index_footer");
+};
+
+if(currDocHref.indexOf("http") != -1) {
+isPhP = "y";
+}
+
+
+    
+</script>
+<script src="js/app/x_cssloader.js"  language="javascript" type="text/javascript"></script>
+
+   <script src="js/leaflet/leaflet.js" type="text/javascript"></script>
+      <script src="js/leaflet/logipal/leaflet.functionaltilelayer.js"></script>
+ 
+
+
+  <script src="js/leaflet/easy.button.js"></script>
+    <script src="js/leaflet/lrm/leaflet.iconlabel.js"></script>
+    <script src="js/leaflet/lrm/Control.Geocoder.js"></script>
+    <script src="js/leaflet/lrm/leaflet-routing-machine.js"></script>
+    <script src="js/leaflet/lrm/config.js"></script>
+    <script src="js/leaflet/lrm/lrm-grasshopper.js"></script>
+     <script src="js/leaflet/Control.FullScreen.js"></script>
+       <script src="js/leaflet/spin.js"></script> 
+      <script src="js/leaflet/realtime/leaflet-realtime.js"></script>
+    	<link rel="stylesheet" href="js/leaflet/clusters/MarkerCluster.css" />
+	<link rel="stylesheet" href="js/leaflet/clusters/MarkerCluster.Default.css" />
+	<script src="js/leaflet/clusters/MarkerCluster.js"></script>
+	<!-- <script type="module" src="js/vrp/wasm-vrpcli.js"></script> -->
+</head>
+<body>
+
+<script type="javascript" language="text/javascript">doPJSload();</script>
+
+<header>
+<div id="includedHeader">
+</div>
+<div id="includedNav">
+
+<!-- the following should be in the tplates/index_nav.html and imported as seen at bottom of this page. -->
+<h1 style="max-height:60px;"> 
+<nav class="animenu"> 
+<span>
+ <div id="dvHdr" class="top-bar" style="padding-bottom: 7px;">
+ 
+   <button style="float:right" id="mnuBtn" class="animenu__toggle" onclick="javascript:scroll(0,0);JSSHOP.ui.toggleMnuVisibility('dvMnuT');">
+    <span class="animenu__toggle__bar"></span>
+    <span class="animenu__toggle__bar"></span>
+    <span class="animenu__toggle__bar"></span>
+  </button> 
+
+<!--
+  <span style="float:right" class="onlySmallScreen"><a href="javascript:scroll(0,0);ijUFeedSearch.focus();doDummyFocus();"><i class="material-icons txtClrWhite"  style="margin-top: 5px;font-size:27px;margin-right:6px;" alt="search" title="search">&#xe14c;</i></a></span>
+  
+  <span style="float:right" class="onlyWideScreen"><a  href="javascript:JSSHOP.ui.doDefCBBCC('ahSettingsIcon', null, document.location.href='index.html?pid=aa-settings&cid=' + cid);"><i class="material-icons txtClrWhite"  style="margin-top: 5px;font-size:27px;margin-right:6px;" alt="settings" title="settings">&#xe8b8;</i></a></span>
+  -->
+  
+    <div class="container">
+      <div class="aarow">
+        <div>
+         
+
+
+        <h5 class="onlyWideScreen txtClrWhite txtBold"><a href="index.html"><span id="ancLogoTxt">Logipal</span></a></h5>          
+
+
+
+
+          <ul class="shop-menu"> 
+
+ 
+
+ 
+            <li id="ahAccountIcon"><a href="javascript:JSSHOP.ui.doDefCBBCC('ahAccountIcon', null, document.location.href='index.html?pid=aa-edit-user&cid=' + cid);"><i class="material-icons"  style="margin-top: 5px;font-size:32px;" alt="person" title="person">&#xe7fd;</i></a></li>   
+            <!-- <li id="ahSettingsIcon"><span id="spnAlrtSettings" class="icnbtn slmtable txtSmall txtClrWhite bkgdClrHdr" style="float:right">5</span><a href="javascript:JSSHOP.ui.doDefCBBCC('ahSettingsIcon', null, document.location.href='index.html?pid=aa-settings&cid=' + cid);"><i class="material-icons"  style="margin-top: 5px;font-size:27px;margin-right:6px;" alt="Settings" title="Settings">&#xe8b8;</i></a></li>  --> 
+            <li id="ahNotifyIcon"><span id="spnAlrtNotify" class="icnbtn slmtable txtSmall txtClrWhite bkgdClrHdr" style="float:right"></span><a href="javascript:JSSHOP.ui.doDefCBBCC('ahNotifyIcon', null, document.location.href='index.html?pid=aa-show-notifications&cid=' + cid);"><i class="material-icons"  style="margin-top: 5px;font-size:27px;margin-right:6px;" alt="Notify" title="notifications">&#xe7f4;</i></a></li>   
+
+            <li id="ahMsgsIcon"><span id="spnMsgsNotify" class="icnbtn slmtable txtSmall txtClrWhite bkgdClrHdr" style="float:right"></span><a href="javascript:JSSHOP.ui.doDefCBBCC('ahMsgsIcon', null, doMLinkM('aa-show-messages','pid=aa-show-messages'));"><i class="material-icons"  style="margin-top: 5px;font-size:27px;margin-right:6px;" alt="Messages" title="Messages">&#xe0b7;</i></a></li>   
+
+           <!--  <li id="ahCartIcon"><a href="javascript:JSSHOP.ui.doDefCBBCC('ahCartIcon', null, document.location.href='index.html?pid=aa-show-cart&cid=' + cid + '&ppid=' + ppid);"><i class="material-icons"  style="margin-top: 5px;font-size:32px;margin-right:6px;"  alt="shopping_cart" title="shopping_cart">&#xe8cc;</i></a></li> -->
+ 			<!--<li id="ahCartIcon"><span id="spnCIcount" class="nada" style="float:right"></span><a href="javascript:JSSHOP.ui.doDefCBBCC('ahCartIcon', null, document.location.href='index.html?pid=aa-show-cart&cid=' + cid + '&ppid=' + ppid);"><i class="material-icons"  style="margin-top: 5px;font-size:27px;margin-right:6px; margin-bottom:0px;padding-bottom:0px;"  alt="shopping_cart" title="shopping_cart">&#xe8cc;</i></a></li>
+ 		   	<li id="ahDeRecent"><a href="javascript:JSSHOP.ui.popAndFillLbox(currUserFavs);"><i class="material-icons  style="margin-right:6px;margin-top: 5px;font-size:27px;" alt="ahDeRecent" title="ahDeRecent">&#xe889;</i></a></li> -->
+           <li id="ahHomeIcon"><a href="javascript:JSSHOP.ui.doDefCBBCC('ahHomeIcon', null, document.location.href='index.html?&cid=' + cid);"><i class="material-icons" style="margin-top: 5px;font-size:27px;margin-right:6px;" alt="home" title="home">&#xe88a;</i></a></li>
+             <li><div id="dvProgIcon" style="min-width:20px;"></div></li>
+
+                     
+          </ul>
+          
+
+          <span class="clsSearchBox" id="dvSearchBox" style="z-index: 9999999999999999;margin:0px;padding:0px;margin-right:10px;">     
+          
+
+
+
+		<!--  aa-cmp-search will be included here andnot pullef from ajax request -->
+		<div  id="dvNMsearch" style="z-index: 9999999999999999;margin:0px;padding:0px;margin-right:10px;"><table cellspacing="0" cellpadding="0" class="">
+										<tr>
+											<td> 
+                    <table border="0" align="center" cellspacing="0" cellpadding="0">
+                      <tr>
+                  <td>
+                    <table border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+      <td>
+        <table border="0" cellspacing="0">
+          <tr>
+            <td style="width: 100%">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td>
+					&nbsp;</td>
+				</tr>
+				</table>
+			
+			</td>
+          </tr>
+ 
+          	</table>
+      </td>
+ 
+ 
+                      </tr>
+                    </table>
+                  </td>
+							 
+                  <td width="100%">
+                    <table style="width: 100%" cellspacing="0" cellpadding="0">
+						<tr>
+					 
+							<td>
+							<table width="100%" cellpadding="0" cellspacing="0"><tr><td align="right">
+
+				
+				
+										 
+											
+												<table style="text-align: center;margin:0 auto;" align="center" cellspacing="0" cellpadding="0">
+													<tr>
+											 
+									<td>
+														<table style="margin: 0 auto;background-color:#FFFFFF" align="center" cellpadding="0" cellspacing="0">
+								<tr>					
+									<td>&nbsp;</td><td valign="middle">                   
+							<input type="text" name="ijUFeedSearch" id="ijUFeedSearch" value="Keywords here"  title="Search" style="text-align:left; width: 100%; border-color:#FFFFFF;border:0px;color:#DEDEDE;z-index: 99999999999;margin-bottom:12px;margin-right:12px;" class="txtLrg"   onfocus="javascript:if(this.value=='Keywords here') this.value = '';this.style.color='#000000';" onblur="if(this.value === '') this.value = 'Keywords here';this.style.color='#DEDEDE'"> 
+							
+		 
+							</td>
+
+		<td>  
+		</td>	
+
+<td>
+  <div style="margin:0px;padding-right:10px;margin-left:8px"><a href="javascript:if (document.getElementById('tat_div')){ actb_display = false;document.body.removeChild(document.getElementById('tat_div')) };scroll(0,0);ijUFeedSearch.value='';doDummyFocus();clearActbArr();"><i class="material-icons"  style="font-size:22px" alt="clear" title="clear">&#xe14c;</i></a></div>
+</td>										 
+<td>													
+ 
+           <div style="margin:0px;padding-right:10px;margin-left:8px"><a href="javascript:getMainSearch(ijUFeedSearch.value);"><i class="material-icons" style="font-size:22px;" alt="search" title="search">&#xe8b6;</i></a></div> 
+   
+
+</td>
+<td>
+<div id="dvBtnSexpnd" style="margin:0px;padding:0px;margin-left:8px" class="onlySmallScreen"><a href="javascript:ijUFeedSearch.focus();doDummyFocus();"><i class="material-icons" style="font-size:22px;" alt="search" title="search">&#xe5db;</i></a></div>
+
+</td>
+
+<td>
+
+  <!--
+<div><div><a href="javascript:doBarCodeScan('add');" class="txtDecorNone">
+					  <i class="material-icons" style="font-size:42px;" alt="barcode" title="barcode">&#xe329;</i>  
+					 <img  align="absmiddle" style="text-align:center; margin-bottom:7px;margin-left:7px" title="barcode" alt="barcode" height="22px" src="images/misc/barcode.gif"></a></div><div id="mod_i_bcode"></div></div>
+					 
+	 -->				 
+					 </td>
+
+									
+	</tr>
+									</table></td>
+													</tr>
+												</table>
+													</td></tr></table></td>
+							<td>
+							
+ 
+ 						   </td>
+						</tr>
+		 
+						</table>
+                  </td>
+                      </tr>
+                      </table></td>
+										</tr>
+										</table>
+ </div>
+
+		<!--  ENDOF aa-cmp-search will be included here andnot pullef from ajax request -->
+		
+       
+          </span> 
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</span>
+
+<!-- <ul id="mnuULmain" class="animenu__nav"></ul> -->
+
+ 
+</nav>
+
+
+
+
+<script type="javascript" language="text/javascript">
+(function(){
+  var animenuToggle = document.querySelector('.animenu__toggle'),
+      animenuNav    = document.querySelector('.animenu__nav'),
+      hasClass = function( elem, className ) {
+        return new RegExp( ' ' + className + ' ' ).test( ' ' + elem.className + ' ' );
+      },
+      toggleClass = function( elem, className ) {
+        var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, ' ' ) + ' ';
+        if( hasClass(elem, className ) ) {
+          while( newClass.indexOf( ' ' + className + ' ' ) >= 0 ) {
+            newClass = newClass.replace( ' ' + className + ' ' , ' ' );
+          }
+          elem.className = newClass.replace( /^\s+|\s+$/g, '' );
+        } else {
+          elem.className += ' ' + className;
+        }
+      },           
+      animenuToggleNav =  function (){        
+        toggleClass(animenuToggle, "animenu__toggle--active");
+        toggleClass(animenuNav, "animenu__nav--open");        
+      }
+
+  if (!animenuToggle.addEventListener) {
+      animenuToggle.attachEvent("onclick", animenuToggleNav);
+  }
+  else {
+      animenuToggle.addEventListener('click', animenuToggleNav);
+  }
+})()
+
+
+
+</script></h1>
+
+<div id="dvMnuT" class="bkgdClrWhite collection brdrClrDlg" style="display:none;visibility:hidden;max-width: 93%;min-height: 40px;padding-top: 10px;padding-left: 5px;padding-right: 20px;z-index:98988;position:fixed;margin: 7px"><!-- !! DO NOT DELETE !! MOBILE MENU DIV !! --></div>
+
+
+<!-- LIGHTBOX CODE BEGIN -->
+<div id="lightbox" class="lightbox" style="display:none;z-index:1;" onclick="javascript:JSSHOP.ui.closeLbox();">
+</div> <div id="lightbox_content" class="rtable bkgdClrWhite" style="min-height:400px;min-width:350px;z-index:999999;position:fixed;top:-500px;word-wrap: break-word;">
+      </div>
+<div id="dvMsgBox" class="rtable bkgdClrWhite" style="min-height:100px;min-width:280px;z-index:999999;position:fixed;top:-200px;">
+dvmdgbix</div>
+      
+      
+      
+<!--
+// not sure what this was for. see if can be deleted.       
+<div id="dvDynCtt" style="max-height:120px;min-width:280px;z-index:998889;position:fixed;top:-300px;">
+<IFRAME height="200px" frameborder="0" border="0" src="tplates/index_blank.html" marginwidth="0" marginheight="0" id="ifrmDynCtt" name="ifrmDynCtt">
+</IFRAME>
+</div>
+-->
+
+
+
+
+<!-- LIGHTBOX CODE END  -->
+
+<!-- end of the above should be in the tplates/index_nav.html and imported as seen at bottom of this page. -->
+
+</div>
+
+
+
+
+
+</header>
+
+<div>&nbsp;</div>
+<div id="dvSearchBoxSlim" style=" padding:3px; margin:3px; margin-bottom:14px; background-color: #FFFFFF; " class="onlySmallScreen slmtable brdrClrDlg"></div>
+
+<!-- -->
+<div style="min-height:40px" class="onlyWideScreen"></div>
+
+<div style="top: -160px; left:-5025px; position:fixed;">
+<input type="checkbox" id="chkbxDummy">
+</div>
+
+
+
+
+
+<input type="hidden" name="fldChallArray" id="fldChallArray" value="noQvalue">
+<div id="includedForms" style="position:fixed;top:-400px;">
+
+<!-- called from index.php -->
+<form name="quser">
+<input type="hidden" name="_id" value="gfgfgfgfgfg" data-prval="disnull">
+<input type="hidden" name="u_rtype" id="u_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="u_sector" id="u_sector" value="5" data-prval="disnull">
+<input type="hidden" name="u_jtype" id="u_jtype" value="5" data-prval="disnull">
+<input type="hidden" name="u_name" id="u_name" value="" data-prval="disnull">
+<input type="hidden" name="u_fname" id="u_fname" value="" data-prval="disnull">
+<input type="hidden" name="u_lname" id="u_lname" value="" data-prval="disnull">
+<input type="hidden" name="u_tel" id="u_tel" value="" data-prval="disnull">
+<input type="hidden" name="u_location" id="u_location" value="" data-prval="disnull">
+
+<input type="hidden" name="u_email" id="u_email" value="" data-prval="disnull">
+<input type="hidden" name="u_pass" id="u_pass" value="" data-prval="disnull">
+<input type="hidden" name="u_header" id="u_header" value="" data-prval="disnull">
+<input type="hidden" name="u_icon" id="u_icon" value="trans.gif" data-prval="disnull">
+
+<input type="hidden" name="u_socauthtype" id="u_socauthtype" value="" data-prval="disnull">
+<input type="hidden" name="u_socauthid" id="u_socauthid" value="" data-prval="disnull">
+<input type="hidden" name="u_socauthtoke" id="u_socauthtoke" value="" data-prval="disnull">
+<input type="hidden" name="u_dadded" id="u_dadded" value="" data-prval="disnull">
+</form>
+
+<form name="qco">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="c_rtype" id="c_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="c_category" id="c_category" value="5" data-prval="disnull">
+
+<input type="hidden" name="c_uid" id="c_uid" value="" data-prval="disnull">
+<input type="hidden" name="c_title" id="c_title" value="Logipal" data-prval="disnull">
+<input type="hidden" name="c_header" id="c_header" value="Logipal" data-prval="disnull">
+
+<input type="hidden" name="c_desc" id="c_desc" value="" data-prval="disnull">
+<input type="hidden" name="c_tel" id="c_tel" value="" data-prval="disnull">
+<input type="hidden" name="c_web" id="c_web" value="" data-prval="disnull">
+<input type="hidden" name="c_email" id="c_email" value="" data-prval="disnull"> 
+<input type="hidden" name="c_logoimg" id="c_logoimg" value="noQvalaue" data-prval="disnull"> 
+
+<input type="hidden" name="c_zipcode" id="c_zipcode" value="" data-prval="disnull"> 
+<input type="hidden" name="c_street" id="c_street" value="" data-prval="disnull"> 
+<input type="hidden" name="c_location" id="c_location" value="" data-prval="disnull"> 
+<input type="hidden" name="c_region" id="c_region" value="" data-prval="disnull"> 
+<input type="hidden" name="c_country" id="c_country" value="" data-prval="disnull"> 
+
+
+<input type="hidden" name="c_vala" id="c_vala" value="" data-prval="disnull">
+<input type="hidden" name="c_valb" id="c_valb" value="" data-prval="disnull">
+<input type="hidden" name="c_privacy" id="c_privacy" value="" data-prval="disnull">
+<input type="hidden" name="c_dadded" id="c_dadded" value="" data-prval="disnull">
+</form>
+
+<form name="qcat">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="cat_rtype" id="cat_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="cat_uid" id="cat_uid" value="5" data-prval="disnull">
+<input type="hidden" name="cat_coid" id="cat_coid" value="5" data-prval="disnull">
+<input type="hidden" name="cat_pid" id="cat_pid" value="0" data-prval="disnull">
+<input type="hidden" name="cat_title" id="cat_title" value="" data-prval="disnull">
+<input type="hidden" name="cat_desc" id="cat_desc" value="qdesc" data-prval="disnull">
+<input type="hidden" name="cat_vala" id="cat_vala" value="1" data-prval="disnull">
+<input type="hidden" name="cat_valb" id="cat_valb" value="10001" data-prval="disnull">
+<input type="hidden" name="cat_dadded" id="cat_dadded" value="" data-prval="disnull">
+</form>
+
+<form name="qitem">
+<input type="hidden" name="_id" value="0" data-prval="disnull">
+<input type="hidden" name="i_rtype" id="i_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="i_itemid" id="i_itemid" value="5" data-prval="disnull">
+<input type="hidden" name="i_bcode" id="i_bcode" value="5" data-prval="disnull">
+<input type="hidden" name="i_uid" id="i_uid" value="5" data-prval="disnull">
+<input type="hidden" name="i_coid" id="i_coid" value="5" data-prval="disnull">
+<input type="hidden" name="i_catid" id="i_catid" value="5" data-prval="disnull">
+<input type="hidden" name="i_pid" id="i_pid" value="0" data-prval="disnull">
+<input type="hidden" name="i_stock" id="i_stock" value="0" data-prval="disnull">
+<input type="hidden" name="i_agent" id="i_agent" value="0" data-prval="disnull">
+
+<input type="hidden" name="i_title" id="i_title" value="noQvalue" data-prval="disnull">
+<input type="hidden" name="i_desc" id="i_desc" value="" data-prval="disnull">
+<input type="hidden" name="i_price_a" id="i_price_a" value="0" data-prval="disnull">
+<input type="hidden" name="i_price_b" id="i_price_b" value="0" data-prval="disnull">
+<input type="hidden" name="i_dimen_n" id="i_dimen_n" value="0" data-prval="disnull">
+<input type="hidden" name="i_dimen_v" id="i_dimen_v" value="0" data-prval="disnull">
+<input type="hidden" name="i_img" id="i_img" value="0" data-prval="disnull">
+<input type="hidden" name="i_vala" id="i_vala" value="noQvalue" data-prval="disnull">
+<input type="hidden" name="i_valb" id="i_valb" value="0" data-prval="disnull">
+<input type="hidden" name="i_dadded" id="i_dadded" value="" data-prval="disnull">
+</form>
+
+<form name="qcartitem">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="ci_rtype" id="ci_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="ci_itemid" id="ci_itemid" value="5" data-prval="disnull">
+<input type="hidden" name="ci_uid" id="ci_uid" value="5" data-prval="disnull">
+<input type="hidden" name="ci_cartid" id="ci_cartid" value="5" data-prval="disnull">
+<input type="hidden" name="ci_coid" id="ci_coid" value="5" data-prval="disnull">
+<input type="hidden" name="ci_catid" id="ci_catid" value="5" data-prval="disnull">
+<input type="hidden" name="ci_pid" id="ci_pid" value="" data-prval="disnull">
+<input type="hidden" name="ci_title" id="ci_title" value="" data-prval="disnull">
+<input type="hidden" name="ci_price_a" id="ci_price_a" value="" data-prval="disnull">
+<input type="hidden" name="ci_price_b" id="ci_price_b" value="" data-prval="disnull">
+<input type="hidden" name="ci_dimen_n" id="ci_dimen_n" value="" data-prval="disnull">
+<input type="hidden" name="ci_dimen_v" id="ci_dimen_v" value="" data-prval="disnull">
+<input type="hidden" name="ci_img" id="ci_img" value="0" data-prval="disnull">
+<input type="hidden" name="ci_cartqty" id="ci_cartqty" value="1" data-prval="disnull">
+<input type="hidden" name="ci_vala" id="ci_vala" value="" data-prval="disnull">
+<input type="hidden" name="ci_valb" id="ci_valb" value="" data-prval="disnull">
+<input type="hidden" name="ci_dadded" id="ci_dadded" value="" data-prval="disnull">
+</form>
+
+<form name="qorder">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="o_rtype" id="o_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="o_uid" id="o_uid" value="5" data-prval="disnull">
+<input type="hidden" name="o_cartid" id="o_cartid" value="5" data-prval="disnull">
+<input type="hidden" name="o_coid" id="o_coid" value="5" data-prval="disnull">
+<input type="hidden" name="o_pid" id="o_pid" value="" data-prval="disnull">
+<input type="hidden" name="o_cartqty" id="o_cartqty" value="" data-prval="disnull">
+<input type="hidden" name="o_vala" id="o_vala" value="" data-prval="disnull">
+<input type="hidden" name="o_valb" id="o_valb" value="" data-prval="disnull">
+<input type="hidden" name="o_dadded" id="o_dadded" value="" data-prval="disnull">
+</form>
+
+
+<form name="qmedia">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="m_rtype" id="m_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="m_uid" id="m_uid" value="5" data-prval="disnull">
+<input type="hidden" name="m_coid" id="m_coid" value="5" data-prval="disnull">
+<input type="hidden" name="m_catid" id="m_catid" value="5" data-prval="disnull">
+<input type="hidden" name="m_pid" id="m_pid" value="5" data-prval="disnull">
+<input type="hidden" name="m_file" id="m_file" value="5" data-prval="disnull">
+<input type="hidden" name="m_data" id="m_data" value="5" data-prval="disnull">
+<input type="hidden" name="m_vala" id="m_vala" value="5" data-prval="disnull">
+<input type="hidden" name="m_valb" id="m_valb" value="5" data-prval="disnull">
+<input type="hidden" name="m_valc" id="m_valc" value="5" data-prval="disnull">
+<input type="hidden" name="m_dadded" id="m_dadded" value="5" data-prval="disnull">
+</form>
+
+
+<form name="qextras">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="e_rtype" id="e_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="e_uid" id="e_uid" value="5" data-prval="disnull">
+<input type="hidden" name="e_vala" id="e_vala" value="noQvalue" data-prval="disnull">
+<input type="hidden" name="e_valb" id="e_valb" value="" data-prval="disnull">
+<input type="hidden" name="e_valc" id="e_valc" value="" data-prval="disnull">
+<input type="hidden" name="e_vald" id="e_vald" value="" data-prval="disnull">
+<input type="hidden" name="e_vale" id="e_vale" value="" data-prval="disnull">
+<input type="hidden" name="e_valf" id="e_valf" value="" data-prval="disnull">
+<input type="hidden" name="e_dadded" id="e_dadded" value="" data-prval="disnull">
+</form>
+
+<form name="qmsgs">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="msg_rtype" id="msg_rtype" value="5" data-prval="disnull" data-flbl="ID" data-ftype="span" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="msg_threadid" id="msg_threadid" value="0" data-prval="disnull">
+<input type="hidden" name="msg_cartid" id="msg_cartid" value="noQvalue" data-prval="disnull" data-flbl="CartID" data-ftype="span" data-fval="thisval">
+<input type="hidden" name="msg_prodid" id="msg_prodid" value="noQvalue" data-prval="disnull" data-flbl="ProductID" data-ftype="span" data-fval="thisval">
+<input type="hidden" name="msg_userid" id="msg_userid" value="noQvalue" data-prval="disnull" data-flbl="ProductID" data-ftype="span" data-fval="thisval">
+<input type="hidden" name="msg_viewed" id="msg_viewed" value="-" data-prval="disnull"  data-flbl="Viewed" data-ftype="span" data-fval="thisval">
+<input type="hidden" name="msg_from" id="msg_from" value="" data-prval="disnull" data-flbl="From" data-ftype="tinput" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="msg_fromsg_email" id="msg_fromsg_email" value="" data-prval="disnull" data-flbl="Your Email" data-ftype="tinput" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="msg_fromsg_tel" id="msg_fromsg_tel" value="" data-prval="disnull" data-flbl="Tel" data-ftype="tinput" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="msg_fromsg_ip" id="msg_fromsg_ip" value="" data-prval="disnull">
+<input type="hidden" name="msg_to" id="msg_to" value="" data-prval="disnull"  data-flbl="To" data-ftype="span" data-fval="thisval">
+<input type="hidden" name="msg_to_email" id="msg_to_email" value="" data-prval="disnull"  data-flbl="Email" data-ftype="span" data-fval="thisval">
+<input type="hidden" name="msg_subject" id="msg_subject" value="" data-prval="disnull" data-flbl="Subject" data-ftype="tinput" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="msg_matter" id="msg_matter" value="" data-prval="disnull" data-flbl="Message" data-ftype="tarea" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="msg_media" id="msg_media" value="normal" data-prval="disnull">
+<input type="hidden" name="msg_priority" id="msg_priority" value="" data-prval="disnull">
+<input type="hidden" name="msg_status" id="msg_status" value="open" data-prval="disnull">
+<input type="hidden" name="msg_docomments" id="msg_docomments" value="open" data-prval="disnull">
+<input type="hidden" name="msg_privacy" id="msg_privacy" value="0" data-prval="disnull">
+<input type="hidden" name="msg_dadded" id="msg_dadded" value="" data-prval="disnull">
+<input type="hidden" name="msg_dmodified" id="msg_dmodified" value="" data-prval="disnull">
+<input type="hidden" name="msg_modifiedby" id="msg_modifiedby" value="" data-prval="disnull">
+</form>
+
+
+<form name="qmsg">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="ms_rtype" id="ms_rtype" value="0" data-prval="disnull" data-flbl="ID" data-ftype="span" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="ms_threadid" id="ms_threadid" value="0" data-prval="disnull">
+<input type="hidden" name="ms_viewed" id="ms_viewed" value="-" data-prval="disnull"  data-flbl="Viewed" data-ftype="span" data-fval="thisval">
+<input type="hidden" name="ms_from" id="ms_from" value="" data-prval="disnull" data-flbl="From" data-ftype="tinput" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="ms_to" id="ms_to" value="" data-prval="disnull" data-flbl="To" data-ftype="tinput" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="ms_matter" id="ms_matter" value="" data-prval="disnull" data-flbl="Message" data-ftype="tarea" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="ms_media" id="ms_media" value="" data-prval="disnull" data-flbl="Media" data-ftype="hidden" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="ms_wildkey" id="ms_wildkey" value="" data-prval="disnull" data-flbl="Wildkey" data-ftype="hidden" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="ms_rating" id="ms_rating" value="" data-prval="disnull" data-flbl="Rating" data-ftype="hidden" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="ms_vala" id="ms_vala" value="" data-prval="disnull" data-flbl="ms_vala" data-ftype="hidden" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="ms_valb" id="ms_valb" value="" data-prval="disnull" data-flbl="ms_vala" data-ftype="hidden" data-fval="thisval" data-fid="tmp_">
+<input type="hidden" name="ms_dadded" id="ms_dadded" value="" data-prval="disnull">
+</form>
+
+
+<form name="qbit">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="q_rtype" id="q_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="q_uid" id="q_uid" value="5" data-prval="disnull">
+<input type="hidden" name="q_pid" id="q_pid" value="" data-prval="disnull">
+<input type="hidden" name="q_title" id="q_title" value="" data-prval="disnull">
+<input type="hidden" name="q_desc" id="q_desc" value="qdesc" data-prval="disnull">
+<input type="hidden" name="q_vala" id="q_vala" value="aa" data-prval="disnull">
+<input type="hidden" name="q_valb" id="q_valb" value="aa" data-prval="disnull">
+<input type="hidden" name="q_dadded" id="q_dadded" value="" data-prval="disnull">
+</form>
+
+
+<form name="qlogifleet">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="qlogf_rtype" id="qlogf_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="qlogf_uid" id="qlogf_uid" value="0" data-prval="disnull">
+<input type="hidden" name="qlogf_coid" id="qlogf_coid" value="0" data-prval="disnull">
+<input type="hidden" name="qlogf_vtype" id="qlogf_vtype" value="5" data-prval="disnull">
+<input type="hidden" name="qlogf_capacity" id="qlogf_capacity" value="5" data-prval="disnull">
+<input type="hidden" name="qlogf_sector" id="qlogf_sector" value="" data-prval="disnull">
+<input type="hidden" name="qlogf_make" id="qlogf_make" value="" data-prval="disnull">
+<input type="hidden" name="qlogf_year" id="qlogf_year" value="" data-prval="disnull">
+<input type="hidden" name="qlogf_plate" id="qlogf_plate" value="" data-prval="disnull">
+<input type="hidden" name="qlogf_ins_date" id="qlogf_ins_date" value="" data-prval="disnull">
+<input type="hidden" name="qlogf_seg_date" id="qlogf_seg_date" value="" data-prval="disnull">
+<input type="hidden" name="qlogf_msg" id="qlogf_msg" value="" data-prval="disnull">
+<input type="hidden" name="qlogf_vala" id="qlogf_vala" value="" data-prval="disnull">
+<input type="hidden" name="qlogf_valb" id="qlogf_valb" value="" data-prval="disnull">
+<input type="hidden" name="qlogf_dadded" id="qlogf_dadded" value="" data-prval="disnull">
+</form>
+ 
+<form name="qlogijob">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="qlogj_rtype" id="qlogj_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_coid" id="qlogj_coid" value="0" data-prval="disnull">
+<input type="hidden" name="qlogj_uid" id="qlogj_uid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_worker_id" id="qlogj_worker_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_coworker_id" id="qlogj_coworker_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_plate_id" id="qlogj_plate_id" value="1" data-prval="disnull">
+<input type="hidden" name="qlogj_trailer_id" id="qlogj_trailer_id" value="1" data-prval="disnull">
+<input type="hidden" name="qlogj_code" id="qlogj_code" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_hour_start" id="qlogj_hour_start" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_km_start" id="qlogj_km_start" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_km_finish" id="qlogj_km_finish" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_km_date" id="qlogj_km_date" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_date" id="qlogj_date" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_status" id="qlogj_status" value="active" data-prval="disnull">
+<input type="hidden" name="qlogj_msg" id="qlogj_msg" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_vala" id="qlogj_vala" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_valb" id="qlogj_valb" value="5" data-prval="disnull">
+<input type="hidden" name="qlogj_dadded" id="qlogj_dadded" value="5" data-prval="disnull">
+</form>
+
+
+
+
+<form name="qlogiplaces">
+<input type="hidden" name="_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_rtype" id="qlogp_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_coid" id="qlogp_coid" value="0" data-prval="disnull">
+<input type="hidden" name="qlogp_category" id="qlogp_category" value="0" data-prval="disnull">
+<input type="hidden" name="qlogp_uid" id="qlogp_uid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_internal" id="qlogp_internal" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_name" id="qlogp_name" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_header" id="qlogp_header" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_desc" id="qlogp_desc" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_tel" id="qlogp_tel" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_contact" id="qlogp_contact" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_web" id="qlogp_web" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_email" id="qlogp_email" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_logoimg" id="qlogp_logoimg" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_zipcode" id="qlogp_zipcode" value="" data-prval="disnull">
+<input type="hidden" name="qlogp_door" id="qlogp_door" value="" data-prval="disnull">
+<input type="hidden" name="qlogp_street" id="qlogp_street" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_location" id="qlogp_location" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_region" id="qlogp_region" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_country" id="qlogp_country" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_placeid" id="qlogp_placeid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_loc_lat" id="qlogp_loc_lat" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_loc_lng" id="qlogp_loc_lng" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_google_url" id="qlogp_google_url" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_rating" id="qlogp_rating" value="0" data-prval="disnull">
+<input type="hidden" name="qlogp_msg" id="qlogp_msg" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_privacy" id="qlogp_privacy" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_whours" id="qlogp_whours" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_vala" id="qlogp_vala" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_valb" id="qlogp_valb" value="5" data-prval="disnull">
+<input type="hidden" name="qlogp_dadded" id="qlogp_dadded" value="5" data-prval="disnull">
+</form>
+
+
+<form name="qlogitask">
+<input type="hidden" name="_id"  value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_rtype" id="qlogt_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_coid" id="qlogt_coid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_uid" id="qlogt_uid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_task_type" id="qlogt_task_type" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_task_id" id="qlogt_task_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_worker_id" id="qlogt_worker_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_code" id="qlogt_code" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_tractor_plate" id="qlogt_tractor_plate" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_trailer_plate" id="qlogt_trailer_plate" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_task_start" id="qlogt_task_start" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_task_finish" id="qlogt_task_finish" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_km_trace" id="qlogt_km_trace" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_msg" id="qlogt_msg" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_vala" id="qlogt_vala" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_valb" id="qlogt_valb" value="5" data-prval="disnull">
+<input type="hidden" name="qlogt_dadded" id="qlogt_dadded" value="5" data-prval="disnull">
+</form>
+
+<form name="qlogitrip">
+<input type="hidden" name="_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_rtype" id="qlogg_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_coid" id="qlogg_coid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_uid" id="qlogg_uid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_task_id" id="qlogg_task_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_code" id="qlogg_code" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_trip_type" id="qlogg_trip_type" value="pickup" data-prval="disnull">
+
+<input type="hidden" name="qlogg_co_from" id="qlogg_co_from" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_co_to" id="qlogg_co_to" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_freight_from" id="qlogg_freight_from" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_freight_to" id="qlogg_freight_to" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_freight_fhour" id="qlogg_freight_fhour" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_freight_thour" id="qlogg_freight_thour" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_best_coords" id="qlogg_best_coords" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_msg" id="qlogg_msg" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_vala" id="qlogg_vala" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_valb" id="qlogg_valb" value="5" data-prval="disnull">
+<input type="hidden" name="qlogg_dadded" id="qlogg_dadded" value="5" data-prval="disnull"></form>
+
+
+<form name="qlogistock">
+<input type="hidden" name="_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_rtype" id="qlogs_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_coid" id="qlogs_coid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_uid" id="qlogs_uid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_trip_id" id="qlogs_trip_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_load_id" id="qlogs_load_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_code" id="qlogs_code" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_freight_fhour" id="qlogs_freight_fhour" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_freight_thour" id="qlogs_freight_thour" value="5" data-prval="disnull">
+
+<input type="hidden" name="qlogs_freight_from" id="qlogs_freight_from" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_freight_to" id="qlogs_freight_to" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_cond" id="qlogs_cond" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_cond_val" id="qlogs_cond_val" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_units" id="qlogs_units" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_unit_type" id="qlogs_unit_type" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_weight" id="qlogs_weight" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_status" id="qlogs_status" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_slot" id="qlogs_slot" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_palid" id="qlogs_palid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_urg" id="qlogs_urg" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_msg" id="qlogs_msg" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_vala" id="qlogs_vala" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_valb" id="qlogs_valb" value="5" data-prval="disnull">
+<input type="hidden" name="qlogs_dadded" id="qlogs_dadded" value="5" data-prval="disnull">
+</form>
+
+
+<form name="qlogiracks">
+<input type="hidden" name="_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_rtype" id="qlogk_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_coid" id="qlogk_coid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_uid" id="qlogk_uid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_pid" id="qlogk_pid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_customid" id="qlogk_customid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_type" id="qlogk_type" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_class" id="qlogk_class" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_title" id="qlogk_title" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_desc" id="qlogk_desc" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_status" id="qlogk_status" value="0" data-prval="disnull">
+<input type="hidden" name="qlogk_load" id="qlogk_load" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_vala" id="qlogk_vala" value="m0" data-prval="disnull">
+<input type="hidden" name="qlogk_valb" id="qlogk_valb" value="5" data-prval="disnull">
+<input type="hidden" name="qlogk_dadded" id="qlogk_dadded" value="5" data-prval="disnull">
+</form>
+
+
+
+
+<form name="qlogicoords">
+<input type="hidden" name="_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogc_rtype" id="qlogc_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="qlogc_coid" id="qlogc_coid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogc_uid" id="qlogc_uid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogc_code" id="qlogc_code" value="5" data-prval="disnull">
+<input type="hidden" name="qlogc_plate" id="qlogc_plate" value="5" data-prval="disnull">
+<input type="hidden" name="qlogc_lat" id="qlogc_lat" value="39.914636900000005" data-prval="disnull">
+<input type="hidden" name="qlogc_lng" id="qlogc_lng" value="-8.621287193292325" data-prval="disnull">
+<input type="hidden" name="qlogc_loc" id="qlogc_loc" value="5" data-prval="disnull">
+<input type="hidden" name="qlogc_msg" id="qlogc_msg" value="5" data-prval="disnull">
+<input type="hidden" name="qlogc_icon" id="qlogc_icon" value="tr9.gif" data-prval="disnull">
+<input type="hidden" name="qlogc_vala" id="qlogc_vala" value="5" data-prval="disnull">
+<input type="hidden" name="qlogc_valb" id="qlogc_valb" value="5" data-prval="disnull">
+<input type="hidden" name="qlogc_dadded" id="qlogc_dadded" value="5" data-prval="disnull">
+</form>
+
+
+
+<form name="qlogitrans">
+<input type="hidden" name="_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_rtype" id="qlogr_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_coid" id="qlogr_coid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_uid" id="qlogr_uid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_load_id" id="qlogr_load_id" value="pickup" data-prval="disnull"> 
+<input type="hidden" name="qlogr_trip_id" id="qlogr_trip_id" value="pickup" data-prval="disnull"> 
+<input type="hidden" name="qlogr_code" id="qlogr_code" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_trip_type" id="qlogr_trip_type" value="pickup" data-prval="disnull">
+
+<input type="hidden" name="qlogr_freight_to" id="qlogr_freight_to" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_ft_tag" id="qlogr_ft_tag" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_coords" id="qlogr_coords" value="5" data-prval="disnull">
+
+<input type="hidden" name="qlogr_freight_thour" id="qlogr_freight_thour" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_freight_type" id="qlogr_freight_type" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_status" id="qlogr_status" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_msg" id="qlogr_msg" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_vala" id="qlogr_vala" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_valb" id="qlogr_valb" value="5" data-prval="disnull">
+<input type="hidden" name="qlogr_dadded" id="qlogr_dadded" value="5" data-prval="disnull"></form>
+
+
+
+
+  
+<form name="qlogiload">
+<input type="hidden" name="_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_rtype" id="qlogl_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_coid" id="qlogl_coid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_uid" id="qlogl_uid" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_job_id" id="qlogl_job_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_trip_id" id="qlogl_trip_id" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_code" id="qlogl_code" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_trip_type" id="qlogl_trip_type" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_freight_fhour" id="qlogl_freight_fhour" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_freight_thour" id="qlogl_freight_thour" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_freight_from" id="qlogl_freight_from" value="5" data-prval="disnull">
+ 
+
+<input type="hidden" name="qlogl_freight_to" id="qlogl_freight_to" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_ff_tag" id="qlogl_ff_tag" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_ft_tag" id="qlogl_ft_tag" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_coords" id="qlogl_coords" value="5" data-prval="disnull">
+
+
+
+
+<input type="hidden" name="qlogl_cond" id="qlogl_cond" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_cond_val" id="qlogl_cond_val" value="5" data-prval="disnull">
+
+<input type="hidden" name="qlogl_units" id="qlogl_units" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_unit_type" id="qlogl_unit_type" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_dunits" id="qlogl_dunits" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_dunit_type" id="qlogl_dunit_type" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_weight" id="qlogl_weight" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_options" id="qlogl_options" value="[]" data-prval="disnull">
+
+<input type="hidden" name="qlogl_status" id="qlogl_status" value="5" data-prval="disnull">
+
+<input type="hidden" name="qlogl_msg" id="qlogl_msg" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_vala" id="qlogl_vala" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_valb" id="qlogl_valb" value="5" data-prval="disnull">
+<input type="hidden" name="qlogl_dadded" id="qlogl_dadded" value="5" data-prval="disnull"></form>
+
+
+<form name="qconn" id="qconn" target="_top" action="_p/do.php" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
+<input type="hidden" name="action" value="save" data-prval="disnull">
+<input type="hidden" name="fn" value="noQvalue" data-prval="disnull">
+<input type="hidden" name="fc" value="m" data-prval="disnull">
+<input type="hidden" name="lz" value="n" data-prval="disnull">
+<input type="hidden" name="ls" value="n" data-prval="disnull">
+<input type="hidden" name="el" value="noQvalue" data-prval="disnull">
+<input type="hidden" name="cb" value="noQvalue" data-prval="disnull">
+<input type="hidden" name="q" value="noQvalue" data-prval="disnull">
+<input type="hidden" name="ur" value="noQvalue" data-prval="disnull">
+<input type="hidden" name="rs"  value="noQvalue" data-prval="disnull">
+<input type="hidden" name="er" value="noQvalue" data-prval="disnull">
+</form>
+
+
+</div>
+
+ 
+ <div id="mmn" class="nanimenu animenu">
+ 	<div  id="mnuT" style="padding-left:10px;margin-top:15px; " >
+  
+	 </div></div> 
+
+	 
+
+
+
+
+
+
+
+
+
+<table id="tblMNContent" style="min-height:80px;" class=""  cellpadding="0" cellspacing="0" width="100%"><tr>
+	<td valign="top" class="onlyWideScreen">
+	
+	<table style="width: 100%">
+		<tr>
+			<td>
+
+ <div id="dvLMenuTgl" class="onlyWideScreen icnbtn crsrPointer" onclick="javascript:JSSHOP.ui.toggleNuModule('dvLMenuTgl','tdLMenu');JSSHOP.ui.toggleVisibility('tdXCMoreBtn');JSSHOP.user.setCkiePrfDispVal('prfsSHOPuser','TGL_MLM','tdLMenu');">
+<i class="small-material-icons" style="font-size:22px">expand_more</i></div>
+			</td>
+		</tr>
+		<tr>
+			<td id="tdLMenu" nowrap="nowrap" style="visobility: hidden;display: none">
+
+
+
+<div class="onlyWideScreen clsTDLmenu bkgdClrWhite" style="overflow:auto;max-height:90%;border: 0px;">
+</div>
+
+ 		   </td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+</td><td valign="top" width="100%"><table style="min-height:80px;margin:0 auto" align="center" width="100%" cellpadding="0" cellspacing="0"><tr>
+		<td valign="top">
+
+
+
+
+
+	 <div id="dvMCatTree" style="z-index:99999;margin-right:20px;margin-bottom:2px;margin-top:18px;float:right;min-height: 40px;max-width:97%">
+</div>
+
+
+<!-- TitleBar and left top right for mobile menus CODE BEGIN -->
+
+
+<table  class="clsDvCntntTtle" width="100%" cellspacing="0"><tr>
+	<td>
+<span class="onlySmallScreen"><a class="clsDvCntntTtle txtBig txtBold txtDecorNone"  href="javascript:history.go(-1);" >&nbsp;&lt;-</a></span>
+				 </td><td width="100%" id="tdTitleBar" style="padding-left:10px">
+	<ti data-ison="currPgTitle" data-desc="title_bar"></ti></td>
+	<td align="right" id="tdXCMoreBtn" style="visibility: hidden;display: none" class="onlyWideScreen"><table><tr>
+		<td>
+				 
+  <a class="btn txtBold" href="javascript:JSSHOP.ui.toggleVisibility('mmDdown')" style="text-transform:none"><ti data-ison="stxt[62]" data-desc="btn_more">More</ti></a>
+        
+ 
+
+        
+        
+        </td></tr></table></td>
+	<td align="right"  class="onlySmallScreen"><table><tr><td  class="onlySmallScreen">
+				 
+  <a class="btn txtBold" href="javascript:JSSHOP.ui.toggleVisibility('mmDdown')" style="text-transform:none"><ti data-ison="stxt[62]" data-desc="btn_more">More</ti></a>
+        
+ 
+
+        
+        
+        </td></tr></table></td></tr></table>
+
+         		      <table   onblur="javascript:JSSHOP.ui.toggleVisibility('mmDdown')"><tr><td style="width: 100%"></td><td style="min-width:150px;" nowrap="nowrap"> 
+         		      <div class="collection rstable brdrClrHdr bkgdWhite" id="mmDdown" style="position:absolute;display:none;visibility:hidden;z-index:999999;margin:10px;padding-right:15px; " nowrap="nowrap">
+
+
+
+
+  </div> </td></tr></table>
+  
+  
+  
+
+<!-- end of main menus and title bar -->
+
+
+
+
+
+<div><div id="includedContent" style="min-height:300px">
+</div></div></td></tr><td><div id="includedMsgs">
+</div><br>
+
+<a class="txtSmaller txtClrBlack txtDecorNone" href="javascript:JSSHOP.cookies.setCookie('usrlang','en_us','130','','','');document.location.href='index.html?nls=y';">
+			English</a>&nbsp; |&nbsp;
+			<a class="txtSmaller txtClrBlack txtDecorNone" href="javascript:JSSHOP.cookies.setCookie('usrlang','spa_spa','130','','','');document.location.href='index.html?nls=y';">
+			Spanish</a>&nbsp; |&nbsp;
+			<a class="txtSmaller txtClrBlack txtDecorNone"  href="javascript:JSSHOP.cookies.setCookie('usrlang','pt_pt','130','','','');document.location.href='index.html?nls=y';">
+			Portuguese</a>
+</td></tr></table></td></tr></table>
+<!-- </div> -->
+
+<div id="includedFooter" class="txtBold links_footer">
+</div>
+
+<!--
+- js files here or can use boil/tools/yuicompressor/PackForPage.class 
+-->
+<script src="js/app/lz-string.js" language="javascript" type="text/javascript"></script>
+<script src="js/app/js_spinner.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_all.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_booter.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_admin.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_menu.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/js_actb.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/js_pikaday.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_aqr.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/js_barcode.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_app.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_cookienotice.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_shared.js"  language="javascript" type="text/javascript"></script>
+<script src="js/st/Sortable.js"  language="javascript" type="text/javascript"></script>
+<!--
+- PackForPage Takes the js files and compresses to single page.
+<script src="js/quickorder_min.js"  language="javascript" type="text/javascript"></script>
+  -->
+<div id="dvDynCtt" style="max-width:200px">
+<IFRAME width="200px" height="10px" frameborder="0" border="0" src="blank.html" marginwidth="0" marginheight="0" id="ifrmDynCtt" name="ifrmDynCtt" title="DynContent Iframe">
+</IFRAME>
+</div>
+
+<div id="dvDummy"></div>
+<script language="javascript" type="text/javascript">
+// JSSHOP.ajax.doNuAjaxPipe("includedNav",  "tplates/index_nav.html", pfRet);
+setTimeout("doBootLoad()", 800);
+// JSSHOP.loadScript("js/" + jscssprefix + "x_menu.js", doACTBboot,"js");
+doSpinSet("includedContent", "big", "loading....");
+
+</script>
+
+</body> 
+</html>

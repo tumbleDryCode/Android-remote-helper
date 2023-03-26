@@ -1,0 +1,123 @@
+ 
+.offcanvas-end {
+	display: block;
+	visibility: visible;
+	transition: auto;
+	width: 100%;
+	transform: translateX(0%);
+}
+.offcanvas {
+	display: block;
+	visibility: visible;
+	position:relative;
+	background-color: transparent;
+	z-index: 1;
+}
+
+ 
+.btn, .btn-large {
+  text-decoration: none;
+  color: #000000;
+   background-color: transparent;
+   letter-spacing: auto;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+  cursor: pointer;
+  border: 0px;
+  box-shadow: none;
+}
+
+.btn-group, .btn {
+	font-size: 12px;
+	letter-spacing:  0.5px;
+    padding: 1px;
+	margin: 0px;
+}
+btn-success {
+	border: 0px;
+}
+
+.btn:hover {
+  color: #212529;
+}
+.xcollection-item:hover {
+  background-color: #212529;
+  color: #DEDEDE;
+}
+.btn-check:focus + .btn, .btn:focus {
+  outline: 0;
+  box-shadow: none;
+  border-bottom: 1px solid orange;
+}
+.cls-icn-wrap {
+  margin-right: 3px;
+}
+
+.dropdown-menu:after, .dropdown-menu:before {
+    content: none;
+    display: none;
+    position: relative;
+}
+
+.dropdown-toggle, .dropdown-toggle-split {
+	font-weight: bold;
+	font-size: 18px;
+	padding-right:10px;
+	text-align: absmiddle;
+	vertical-align: absmiddle;
+}
+.dropdown-toggle-split {
+	color: #DEDEDE;
+}
+.dropdown-toggle {
+	float: right;
+}
+
+.modal-backdrop-bg {
+	    background:rgba(236, 236, 255, .6);
+}
+ 
+.alert {
+ 
+}
+
+@media screen and (max-width: 2000px) {
+ 
+}
+
+@media screen and (max-width: 800px) {
+ 
+}
+
+
+
+@media screen and (max-width: 500px) {
+ 
+
+.offcanvas-end {
+    top: 0;
+    right: 0;
+    width: 400px;
+    border-left: 1px solid rgba(0,0,0,.2);
+    transform: translateX(100%);
+}
+
+
+.offcanvas {
+    position: fixed;
+    bottom: 0;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    visibility: hidden;
+    background-color: #fff;
+    background-clip: padding-box;
+    outline: 0;
+    transition: transform .3s ease-in-out;
+}
+ 
+	.btn-group {
+	display: block;
+}
+}  /* end max width mobile */

@@ -1,0 +1,27 @@
+<html><head>
+
+
+ <script src="js/x_all.js" language="javascript" type="text/javascript"></script>
+<script src="js/x_booter.js"  language="javascript" type="text/javascript"></script>
+ <script src="js/x_speech_editor.js" language="javascript" type="text/javascript"></script>
+                  
+                  <script language="javascript" type="text/javascript">
+                  function doTest(){ document.getElementById('dvSpeech').innerHTML = document.getElementById('txtSpeech').value; }
+                  </script>
+
+                  <link href="css/x_dev.css" rel="stylesheet">
+                  </head><body>
+
+ 
+
+                  <div style="position: absolute; left: 1px; top: -477px;"><textarea name="txtSpeech"  id="txtSpeech">this is some righteous text. it was done right.|:|This is one might text. This is done white.|:|This kid some righteous mix. This comes one night.</textarea></div>
+                  <div name="dvMain"  id="dvMain"  style="min-height:60px;">
+
+                  <div name="dvSpeech"  id="dvSpeech"  class="searchBStoryDiv" contenteditable="true">
+                  </div></div>
+                  <br><a href="javascript:alert(JSON.stringify(JSON.parse(eval(dvSpeech.innerHTML))));">Done</a>
+                  <br><a href="javascript:doTest();">Test</a>
+                  <br><a href="javascript:doAppTest();">AppTest</a>
+                  <br>This speech grabs the speech to text results and is 
+				  broken.<br>see the speach functions in qBits.java
+                  </body></html>

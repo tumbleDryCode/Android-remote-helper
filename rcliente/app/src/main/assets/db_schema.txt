@@ -1,0 +1,15 @@
+CREATE TABLE rscanjob (
+  _id  integer primary key auto_increment,
+  rjob_rtype text,
+  rjob_stype text,
+  rjob_coords text, 
+  rjob_rcode int(12),
+  rjob_title text,
+  rjob_desc text,
+  rjob_vala text,
+  rjob_valb text,
+  rjob_dadded varchar(14)
+);
+
+ 
+

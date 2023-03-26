@@ -1,0 +1,233 @@
+<table style="margin: 0 auto;max-width: 90%" align="center">
+	<tr>
+		<td>
+ 
+
+<table>
+		<tr>
+			<td>
+			&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div>
+				<table style="width: 100%">
+					<tr>
+			<td>
+			<div  id="tdItemAdd" class="slmtable brdrClrLGrey">
+				<table style="width: 100%">
+					<tr>
+					<td><table style="width: 100%; margin:0 auto">
+						<tr>
+		<td style="text-align:left"><table align="left"><tr>
+			<td>
+	<span id="lbl_qlogf_sector"></span></td></tr></table>
+</td>
+						</tr>
+						<tr>
+		<td style="text-align: left">
+						 <select size="1" name="tmp_qlogf_sector" id="tmp_qlogf_sector" class="crsrPointer">
+						 </select></td>
+						</tr>
+						<tr>
+		<td style="text-align: center"></td>
+						</tr>
+						<tr>
+		<td style="text-align: center"></td>
+						</tr>
+						<tr>
+		<td style="text-align:left"><table align="left"><tr>
+			<td>
+	<span id="lbl_qlogf_vtype"></span></td></tr></table>
+</td>
+						</tr>
+						<tr>
+		<td>
+						 <select size="1" name="tmp_qlogf_vtype" id="tmp_qlogf_vtype" class="crsrPointer">
+                                      <option value="1">Turismo</option>
+                                      <option value="2">Fragunete</option>
+                                      
+ 
+                                      <option value="3">Frag. Bi Temp
+									  </option>
+									  <option value="4">Frag. Tri Temp
+									  </option>
+									  <option value="5">Camiao</option>
+									  <option value="6">Camiao Bi Temp
+									  </option>
+									  <option value="7">Camiao Tri Temp
+									  </option>
+									  <option value="8">Galera</option>
+									  <option value="9">Galera Bi Temp
+									  </option>
+									  <option value="10">Galera Tri Temp
+									  </option>
+									  <option value="11">Tractor</option>
+                                      
+ 
+                                      </select></td>
+						</tr>
+						<tr>
+		<td style="text-align: center">&nbsp;</td>
+						</tr>
+						<tr>
+		<td><table align="left"><tr>
+			<td style="width: 4px">
+	<span id="lbl_qlogf_plate"></span></td></tr></table>
+						  </td>
+					  </tr>
+			  <tr>
+						  <td>
+							  <input name="tmp_qlogf_plate" id="tmp_qlogf_plate" data-ison="v:" class="cls_input_text"  onblur="this.className='cls_input_text'" onfocus="this.className='cls_input_text cls_input_text_focus'"></td>
+						</tr>
+						<tr>
+		<td>
+		&nbsp;</td>
+						</tr>
+	<tr>
+		<td id="tdInpYears"><ti data-ison="stxt[104]" data-desc="year">Year</ti>:</td>
+	</tr>
+	<tr>
+		<td style="text-align: center">
+		<table style="margin: 0 auto;" width="100%" align="center">
+			<tr>
+				<td style="width:100%"> 
+		<input type="number" name="inpYears" id="inpYears" class="cls_input_text" spellckeck="false" autocomplete="off" style="width:100%" onfocus="javascript:tdInpYears.className='txtClrHdr';" onblur="javascript:tdInpYears.className='txtClrDlg';"></td>
+				<td valign="top">
+				<a href="javascript:inpYears.value='';void(0);" class="txtBold txtClrHdr">
+				<span>
+				<i class="material-icons txtBigger txtClrDlg" title="delete">&#xe14c;</i></span></a></td>
+				<td valign="top">&nbsp;&nbsp; &nbsp;</td>
+										<td valign="top"><button class="brdrNone crsrPointer bkgdClrWhite" onclick="javascript:doYearsPop();">
+<i class="small-material-icons txtClrDlg" title="list">&#xe241;</i></button></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td style="text-align: center"></td>
+	</tr>
+	<tr>
+		<td id="tdInpMakes"><ti data-ison="stxt[102]" data-desc="make"><u>M</u>ake</ti>:</td>
+	</tr>
+	<tr>
+		<td>
+		<table style="margin: 0 auto;" width="100%" align="center">
+			<tr>
+				<td style="width:100%">
+		<input spellckeck="false" autocomplete="off" name="inpMakes" id="inpMakes" class="cls_input_text" value="Ex: Audi,BMW.. etc." title="make" style="color:#DEDEFF;width:100%"  onfocus="javascript:tdInpMakes.className='txtClrHdr';if(this.value=='Ex: Audi,BMW.. etc.') this.value = '';this.style.color='#000000';" onblur="javascript:tdInpMakes.className='txtClrDlg';if(this.value === '') { this.value = 'Ex: Audi,BMW.. etc.';this.style.color='#DEDEDE';}"></td>
+				<td valign="top">
+				<a href="javascript:clearInpMakes();" class="txtBold txtClrHdr">
+				<span>
+				<i class="material-icons txtBigger txtClrDlg" title="delete">&#xe14c;</i></span></a></td>
+				<td valign="top">&nbsp;&nbsp; &nbsp;</td>
+										<td valign="top"><button class="brdrNone crsrPointer bkgdClrWhite" onclick="javascript:doMakesPop();">
+<i class="small-material-icons txtClrDlg" title="list">&#xe241;</i></button></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+						<tr>
+							<td></td>
+						</tr>
+	<tr>
+		<td>
+			<table style="width: 100%">
+				<tr>
+					<td><span id="lbl_qlogf_msg">Notaes</span></td>
+				</tr>
+				<tr>
+					<td>
+					<!-- <input class="cls_input_text"  name="tmp_cat_desc" id="tmp_cat_desc" value="" data="disnull"   onblur="this.className='cls_input_text'" onfocus="this.className='cls_input_text cls_input_text_focus'">
+					-->
+					<textarea  name="tmp_qlogf_msg"  id="tmp_qlogf_msg"  style="padding:5px;min-width:300px;overflow:auto;min-height:50px;max-height:300px" contenteditable="true" class="cls_input_tarea"></textarea>
+					</td>
+				</tr>
+			</table>
+			</td>
+	</tr>
+	<tr>
+		<td style="text-align: center"></td>
+	</tr>
+	<tr>
+		<td style="text-align: center"><input type="hidden" name="inpLocation" id="inpLocation" class="cls_input_text"><input type="hidden" name="inpImpModels" value="inpImpModels" id="inpImpModels"><input type="hidden" name="inpImpMakes" value="inpImpParts" id="inpImpMakes"><input type="hidden" name="inpImpParts" value="inpImpParts" id="inpImpParts"><input type="hidden" name="mod_i_title" value="" id="mod_i_title"></td>
+	</tr>
+	<tr>
+		<td>
+		
+		<div align="center"><button id="btnEUsave" class="cls_button-save"><ti data-ison="stxt[21]" data-desc="btn_save">Guardar</ti></button> </div></td>
+	</tr>
+	</table>
+</td>
+					</tr>
+					</table>
+			</div></td>
+					</tr>
+				</table>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			
+			</td>
+		</tr>
+		<tr>
+			<td>
+														  <div id="dvFleetItems"  style="border:0px;max-width:300px;"></div>
+</td>
+		</tr>
+		</table>
+ 
+
+          
+                                       
+			                                   </td>
+	</tr>
+	</table>
+
+
+
+<p>
+</p>
+
+
+
+

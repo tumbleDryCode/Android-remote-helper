@@ -1,0 +1,151 @@
+ 
+<html>
+<head>
+ 
+<meta name="viewport" content="initial-scale=1, user-scalable=no, maximum-scale=1">
+<script  type="text/javascript">
+var isPhP = "no";
+var isJApp = "yes";
+var dw = function(theElem, tStr) { theElem.innerHTML = tStr; };
+var getFArr = function() {
+return new Array("index_header", "index_nav", "index_main", "index_footer");
+};
+</script>
+ 
+
+
+<script language="javascript" type="text/javascript" src="js/lz-string.js"></script>
+<script src="js/app/x_admin.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_all.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_booter.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/media_edit.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/app_all.js"  language="javascript" type="text/javascript"></script>
+<script src="js/app/x_app_scanner.js?v6"  language="javascript" type="text/javascript"></script>
+	<script src="js/app/x_cssloader.js"  language="javascript" type="text/javascript"></script>
+	<link href="fonts/bootstrap/bootstrap-icons.css" rel="stylesheet">
+	<link href="js/bootstrap5.2/bootstrap.min.css" rel="stylesheet">
+	<link href="css/primer.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+	<script src="js/app/x_allinit.js" type="text/javascript"></script>
+
+
+	<link href="js/bootstrap5.2/bootstrap-multiselect.css" rel="stylesheet">
+
+
+	<style>
+.clsThumbimg {
+border: 1px solid #666699;
+vertical-align:center;
+min-height: 42px;
+min-width: 62px;
+max-height: 72px;
+max-width: 72px;
+margin-right:8px;
+margin-bottom:6px;
+}
+.clsThumbdv {
+  display: inline-block;
+  float: left;
+ margin-left: 10px;
+}
+</style>
+
+</head>
+<body style="background-color: #DEDEDE">
+<form name="rscanner">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="rjob_rtype" id="rjob_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_stype" id="rjob_stype" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_coords" id="rjob_coords" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_rcode" id="rjob_rcode" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_title" id="rjob_title" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_desc" id="rjob_desc" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_vala" id="rjob_vala" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_valb" id="rjob_valb" value="5" data-prval="disnull">
+<input type="hidden" name="rjob_dadded" id="rjob_dadded" value="5" data-prval="disnull">
+</form>
+
+
+
+ <table align="center" style="margin: 0 auto">
+	 <tr>
+		 <td>
+		 <table style="width: 100%">
+			 <tr>
+				 <td style="text-align: center">
+				 <table style="width: 100%" cellpadding="4px" cellspacing="4px">
+					 <tr>
+						 <td style="width: 20%; padding:5px;">
+						 <div id="dvScnrTgl" class="slmtable brdrClrDlg txtBigger" style="text-align:center; padding:4px;" onclick="javascript:doScnrBtnE(this);"><div class="spinner-grow spinner-grow-sm text-light" role="status">
+  <span class="sr-only">Loading...</span>
+</div></div></td>
+						 <td style="width: 20%; padding:5px;">
+						 <div id="dvScnrKeys" class="slmtable brdrClrDlg txtBigger" style="text-align:center; padding:4px;" onclick="javascript:doScnrBtnE(this);"><i class="bi bi-cursor-text"></i></div></td>
+						 <td style="width: 20%; padding:5px;">
+						 <div id="dvScnrTask" class="slmtable brdrClrDlg txtBigger" style="text-align:center; padding:4px;" onclick="javascript:doScnrBtnE(this);"><i class="bi bi-list-task"></i></div></td>
+						 <td style="width: 20%; padding:5px;">
+						 <div id="dvScnrStngs" class="slmtable brdrClrDlg txtBigger" style="text-align:center; padding:4px;" onclick="javascript:doScnrBtnE(this);"><i class="bi bi-gear"></i></div></td>
+						 <td style="width: 20%">
+						 <div id="dvScnrHelp" class="slmtable brdrClrDlg txtBigger" style="text-align:center; padding:4px;" onclick="javascript:doScnrBtnE(this);"><i class="bi bi-question"></i></div></td>
+ 
+ 
+					 </tr>
+				 </table>
+				 </td>
+			 </tr>
+ 
+			 <tr>
+				 <td style="text-align: center"><!--
+				 <div id="dvScnrTgl" class="slmtable brdrClrHdr txtBigger" style="text-align:center; padding: 5px"><div class="spinner-grow spinner-grow-sm text-light" role="status">
+  <span class="sr-only">Loading...</span>
+</div></div>
+				 <br>
+				 <a href="javascript:doScnrResume();"><strong>Scan</strong></a>&nbsp;&nbsp;
+				 <a href="javascript:doScnrStop();"><strong>Stop</strong></a>&nbsp;&nbsp;
+				 <a href="javascript:app.doEtxtFxus();"><strong>Keys</strong></a>&nbsp;
+				 <a href="javascript:app.setAppPopStr('hhahhahhhha')">Pop</a>
+				 <a href="javascript:app.setPagePopUp('scanner_dlg2.html','noQvalue')">
+				 <span class="link-primary"><strong>Pop2</strong></span></a><br>
+				 <a href="javascript:app.doMsgSend('qpointx');"><strong>Get X,Y</strong></a>&nbsp;&nbsp;&nbsp; <br>-->
+				 <!-- comment-->
+				 <!-- Not 
+				 Wokring;<br><a href="javascript:app.setCurrScanType('ocr');">OCR</a>-->
+				 </td>
+			 </tr>
+			 </table>
+		 </td>
+	 </tr>
+ </table>
+<input type="hidden" id="fldChallArray" value=" ">
+          
+<div id="dvDummy"></div>
+
+<!-- LIGHTBOX CODE BEGIN -->
+<div id="lightbox" class="lightbox" style="display:none;z-index:1;" onclick="document.getElementById('lightbox').style.display='none';document.getElementById('lightbox_content').style.top='-800px';document.getElementById('lightbox_content').style.display='none';document.getElementById('lightbox_content').innerHTML=''">
+</div> <div id="lightbox_content" class="rtable bkgdClrWhite" style="min-height:100px;min-width:280px;z-index:999999;position:fixed;top:-200px;">
+      </div>
+<div id="dvDynCtt" style="max-height:120px;min-width:280px;z-index:998889;position:fixed;top:-300px;">
+<IFRAME height="200px" frameborder="0" border="0" src="tplates/index_blank.html" marginwidth="0" marginheight="0" id="ifrmDynCtt" name="ifrmDynCtt">
+</IFRAME><input type="text" id="dmyScannerInp" onkeyup="javascript:doScnrMsgSend(event, 1);">
+</div>
+
+<!-- LIGHTBOX CODE END  -->
+&nbsp;
+
+<form name="qorder">
+<input type="hidden" name="_id" value="" data-prval="disnull">
+<input type="hidden" name="o_rtype" id="o_rtype" value="5" data-prval="disnull">
+<input type="hidden" name="o_uid" id="o_uid" value="5" data-prval="disnull">
+<input type="hidden" name="o_cartid" id="o_cartid" value="5" data-prval="disnull">
+<input type="hidden" name="o_coid" id="o_coid" value="5" data-prval="disnull">
+<input type="hidden" name="o_pid" id="o_pid" value="" data-prval="disnull">
+<input type="hidden" name="o_cartqty" id="o_cartqty" value="" data-prval="disnull">
+<input type="hidden" name="o_vala" id="o_vala" value="" data-prval="disnull">
+<input type="hidden" name="o_valb" id="o_valb" value="" data-prval="disnull">
+<input type="hidden" name="o_dadded" id="o_dadded" value="" data-prval="disnull">
+</form>
+
+
+
+ </body> 
+</html>
