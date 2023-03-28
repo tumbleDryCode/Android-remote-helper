@@ -678,7 +678,17 @@ public String getCurrScanType() {
 
 	}
 
+   public void setCurrBATsk(int tskid) {
+		runOnUiThread(new Runnable() {
+			public void run() {
+				String tDBRstr = dbMSQLA.setDBselectQ("select * from rscanjob where _id = " + tskid);
+				utilWDialog.doDismiss();
+				System.out.println("setCurrBATsk:" + tDBRstr);
+				mWebView.loadUrl("javascript:doSetCurrBATsk('" + tDBRstr + "')");
+			}
+		});
 
+	}
 
 	public void setPagePopObj() {
 
@@ -1053,7 +1063,7 @@ public String getCurrScanType() {
 		// Do something with the result here
 		Log.v(TAG, rawResult.getText()); // Prints scan results
 		Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
-		sendToAppDel(rawResult.getText());
+		sendToAppDel("getBTsk:" + rawResult.getText());
 
 		// If you would like to resume scanning, call this method below:
 		  // mScannerView.resumeCameraPreview(this);

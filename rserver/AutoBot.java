@@ -27,16 +27,101 @@ public class AutoBot {
 	int lastYpos = 0;
 	
 	int lastScrollY;
+	String currTaskStr;
 	
 	public AutoBot(){
 		try{ robot = new Robot(); }
 		catch(Exception e){ System.out.println("Couldn't Create robot");}
+		currTaskStr = "";
+	
 	}
+
+    public void doBCTask(String tttoDOstr, String atmpMsgStr) {
+
+        // split each task into | delimited array
+        String[] task = tttoDOstr.split("\\|");
+        String tcoords = task[0];
+        int ttype = Integer.parseInt(task[1]);
+        String[] coords = tcoords.split(":");
+        int x = Integer.parseInt(coords[0]);
+        int y = Integer.parseInt(coords[1]);
+        System.out.println("typer.getBTskCoords: " + x + " " + y + " " + ttype);
+        // move mouse to coords
+        moveRMouse(x, y);
+
+        // switch on ttpe
+        switch (ttype) {
+            case 10: // left click
+                robot.mousePress( InputEvent.BUTTON1_MASK );
+                robot.mouseRelease( InputEvent.BUTTON1_MASK );
+                break;
+            case 15: // right click
+                robot.mousePress( InputEvent.BUTTON3_MASK );
+                robot.mouseRelease( InputEvent.BUTTON3_MASK );
+                break;
+            case 7: // insert bc data
+                System.out.println("typer.getBTskInsertBCData: " + atmpMsgStr);
+                robot.mousePress( InputEvent.BUTTON1_MASK );
+                robot.mouseRelease( InputEvent.BUTTON1_MASK );
+
+                byte[] mbytes = atmpMsgStr.getBytes();
+                for (byte b : mbytes) {
+                    int code = b;
+                    // keycode only handles [A-Z] (which is ASCII decimal [65-90])
+                    if (code > 96 && code < 123) code = code - 32;
+                    robot.delay(40);
+                    robot.keyPress(code);
+                    robot.keyRelease(code);
+                }
+                break;
+
+
+
+            default:
+                break;
+        }
+    }
 	
          // create a function to have robot type a string of characters
          public void typer(String s) {
+            String tmpMsgStr = "noQvalue";
+            String taskArr[];
             System.out.println("typer:" + s);
             try {
+				if(s.indexOf("setBTsk:") != -1) {
+					currTaskStr = s.replace("setBTsk:", "");
+					System.out.println("typer.setBTsk: " + s);
+				} else if(s.indexOf("getBTsk:") != -1) {
+                    // split s into : delimited array
+                    String[] sArr = s.split(":");
+                    // get the second element of the array
+                    tmpMsgStr = sArr[1];
+
+
+
+					System.out.println("typer.getBTsk: " + s);
+                    System.out.println("neededon: " + currTaskStr);
+                    // split currTaskStr into comma delimited array
+                    if(currTaskStr.indexOf(",") != -1) {
+                         taskArr = currTaskStr.split(",");
+                        for(int i = 0; i < taskArr.length; i++) {
+                            doBCTask(taskArr[i], tmpMsgStr);
+                            System.out.println("typer.getBTskArrStr: " + taskArr[i]);
+                        }
+                    } else {
+                        doBCTask(currTaskStr, tmpMsgStr);
+
+                    }
+                    // loop through array and send each task to the server
+
+
+                        // send right click
+
+
+
+
+				} else {
+			
                byte[] bytes = s.getBytes();
                for (byte b : bytes) {
                    int code = b;
@@ -46,6 +131,7 @@ public class AutoBot {
                    robot.keyPress(code);
                    robot.keyRelease(code);
                }
+				}
             } catch (Exception e) {
                System.out.println("typer:" + e);
           
@@ -84,6 +170,19 @@ public class AutoBot {
          
 		}catch(Exception e){ e.printStackTrace(); System.out.println("error here "+event); }
 	}
+
+
+    public void moveRMouse(int x, int y){
+        try{
+
+            System.out.println("moveRMouse: " + x + " " + y);
+            //move the mouse relative to the current position
+            robot.mouseMove(x,  y);
+        }catch(NullPointerException e){
+            // Not sure why this exception occurs
+            System.out.print("NUll pointer exception on mouse R move: " + e);
+        }
+    }
 		
 	public void moveMouse(int x, int y){
 		try{

@@ -153,7 +153,11 @@ public class JSI_controllerDlg   {
     public String getCtrlrPoints() {
         return tepMainDialog.getPointsStr();
     }
+    @JavascriptInterface
+    public void setCurrBATsk(int theInt) {
 
+        tepMainDialog.setCurrBATsk(theInt);
+    }
 
 }
 

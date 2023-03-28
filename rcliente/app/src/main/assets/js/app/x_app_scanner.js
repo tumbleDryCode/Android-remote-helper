@@ -1,4 +1,28 @@
 
+var currBCSTaskObj = {};
+var currBCSTLArr = [];
+var currBCTskStr = "";
+function doSetCurrBATsk(theTTTsk) {
+try {
+console.log("doSetCurrBATskSTR: " + theTTTsk);
+tOBJBAK = null;
+tOBJBAK = "";
+tOBJBAK = {};
+
+tOBJBAKArr = JSON.parse(theTTTsk);
+currBCSTaskObj =  tOBJBAKArr[0];
+console.log("doSetCurrBATskJSTR: " +  JSON.stringify(currBCSTaskObj));
+currBCSTLArr = JSON.parse(LZString.decompressFromEncodedURIComponent(currBCSTaskObj.rjob_vala));
+currBCTskStr = currBCSTLArr.toString();
+console.log("doSetCurrBATskVARRSTR: " +  currBCTskStr);
+console.log("doSetCurrBATskVARR: " +  JSON.stringify(currBCSTLArr));
+app.doMsgSend("setBTsk:" + currBCTskStr);
+// console.log("doSetCurrBATskVALA: " +  LZString.decompressFromEncodedURIComponent(tOBJBAK["rjob_vala"]));
+} catch(e) {
+alert("doSetCurrBATskEE: " + e);
+
+}
+}
 function showScanStat(theScanStat) {
 try {
 tTmpOutput.innerHTML = theScanStat;

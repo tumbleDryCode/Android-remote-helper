@@ -186,15 +186,14 @@ isPhP = "y";
 					<tr>
 					<td><table style="width: 100%; margin:0 auto">
 						<tr>
-		<td id="tdInpMakes"><ti data-ison="stxt[102]" data-desc="make"></ti>
-		Name</td>
+		<td id="tdInpMakes">Title</td>
 						</tr>
 						<tr>
 		<td>
 		<table style="margin: 0 auto;" width="100%" align="center">
 			<tr>
 				<td style="width:100%">
-		<input spellckeck="false" autocomplete="off" name="tmp_rjob_title" id="tmp_rjob_title" class="cls_input_text" value="Ex: Audi,BMW.. etc." title="make" style="color:#DEDEFF;width:100%"  onfocus="javascript:tdInpMakes.className='txtClrHdr';if(this.value=='Ex: Audi,BMW.. etc.') this.value = '';this.style.color='#000000';" onblur="javascript:tdInpMakes.className='txtClrDlg';if(this.value === '') { this.value = 'Ex: Audi,BMW.. etc.';this.style.color='#DEDEDE';}"></td>
+		<input spellckeck="false" autocomplete="off" name="tmp_rjob_title" id="tmp_rjob_title" class="cls_input_text" value="My Scan A" title="make" style="color:#DEDEFF;width:100%"  onfocus="javascript:tdInpMakes.className='txtClrHdr';this.style.color='#000000';" onblur="javascript:tdInpMakes.className='txtClrDlg';this.style.color='#DEDEDE';"></td>
 				<td valign="top">
 				<a href="javascript:clearInpMakes();" class="txtBold txtClrHdr">
 				<span>
@@ -207,28 +206,50 @@ isPhP = "y";
 						<tr>
 							<td></td>
 						</tr>
+						<tr>
+							<td><div id="dvBCAlist"> </div></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
 	<tr>
-		<td id="tdInpYears">Set Pointer Location</td>
+		<td id="tdInpYears">
+		<a href="javascript:doMPointSet();">Click to set 
+		pointer coords</a></td>
 	</tr>
 	<tr>
 		<td style="text-align: center">
 		<table style="margin: 0 auto;" width="100%" align="center">
 			<tr>
 				<td style="width:100%; height: 43px;"> 
-		<input  name="tmp_rjob_coords" id="tmp_rjob_coords" class="cls_input_text" spellckeck="false" autocomplete="off" style="width:100%" onfocus="javascript:tdInpYears.className='txtClrHdr';" onblur="javascript:tdInpYears.className='txtClrDlg';"></td>
-										<td valign="top" style="height: 43px"><button class="brdrNone crsrPointer bkgdClrWhite" onclick="javascript:tmp_rjob_coords.value=doCPointsStr();">
-<i class="small-material-icons txtClrDlg" title="list">&#xe241;</i></button></td>
+		<div  name="tmp_rjob_coords" id="tmp_rjob_coords" class="cls_input_text"></div></td>
 			</tr>
 		</table>
 		</td>
 	</tr>
 	<tr>
-		<td style="text-align: center"></td>
+		<td style="text-align: center; height: 29px;">Select action at this location:</td>
 	</tr>
 	<tr>
-		<td style="text-align: center; height: 29px;"><input type="hidden" name="inpLocation" id="inpLocation" class="cls_input_text"><input type="hidden" name="inpImpModels" value="inpImpModels" id="inpImpModels"><input type="hidden" name="inpImpMakes" value="inpImpParts" id="inpImpMakes"><input type="hidden" name="inpImpParts" value="inpImpParts" id="inpImpParts"><input type="hidden" name="mod_i_title" value="" id="mod_i_title">
-		<div id="dvRJobItems"  style="border:0px;max-width:300px;">
-															   </div></td>
+		<td style="text-align: center"> <select size="1" name="tmp_rjob_rcode" id="tmp_rjob_rcode" class="crsrPointer" onchange="javascript:doFilterChange(this)">
+                                      <option value="noQvalue">Select</option>
+                                      <option value="7">Insert Scan Data</option>
+                                      <option value="10">Perform Left Click</option>
+                                      <option value="15">Perform Righ Click</option>
+                                      </select></td>
+	</tr>
+	<tr>
+		<td>
+		
+		<a href="javascript:setBCactObj();">Add Action</a></td>
+	</tr>
+	<tr>
+		<td>
+		
+		&nbsp;</td>
 	</tr>
 	<tr>
 		<td>
